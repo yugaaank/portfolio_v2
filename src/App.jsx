@@ -395,21 +395,53 @@ nav {
 `;
 
 const PROJECTS = [
-  { n: "01", name: "Spectral OS", tag: "UI / Product" },
-  { n: "02", name: "Vanta Finance", tag: "Web App" },
-  { n: "03", name: "Nocturn Identity", tag: "Branding" },
-  { n: "04", name: "Pulse Analytics", tag: "Dashboard" },
-  { n: "05", name: "Echo Motion", tag: "3D / Motion" },
+  {
+    n: "01",
+    name: "InterventionGPT",
+    tag: "AI / RAG",
+    desc: "RAG-based app for road safety intervention strategies",
+    stack: "Python • Chromadb • Transformers",
+    link: "https://github.com/yugaaank/InterventionGPT"
+  },
+  {
+    n: "02",
+    name: "Code Relay",
+    tag: "Full Stack",
+    desc: "Enterprise task management with complex workflows",
+    stack: "React • Node.js • MySQL",
+    link: "https://github.com/yugaaank/code-relay-foobar"
+  },
+  {
+    n: "03",
+    name: "RecoveryLens",
+    tag: "Web App",
+    desc: "Intelligent recovery tracking system",
+    stack: "TypeScript • Next.js",
+    link: "https://github.com/yugaaank/recoveryLens"
+  },
+  {
+    n: "04",
+    name: "ClearView",
+    tag: "Python / AI",
+    desc: "Data clarity and visualization tool",
+    stack: "Python • Streamlit",
+    link: "https://github.com/yugaaank/clearView"
+  },
+  {
+    n: "05",
+    name: "ffflow",
+    tag: "Systems / Rust",
+    desc: "FFmpeg workflow automation tool",
+    stack: "Rust • CLI",
+    link: "https://github.com/yugaaank/ffflow"
+  },
 ];
+
 const SKILLS = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "Framer",
-  "Figma",
-  "GSAP",
-  "Three.js",
-  "Node",
+  "HTML", "CSS", "JavaScript", "TypeScript",
+  "React", "Next.js", "Node.js", "Express",
+  "MongoDB", "MySQL", "Java", "C",
+  "Linux", "Framer Motion", "GSAP"
 ];
 
 const cl = (v) => Math.min(Math.max(v, 0), 1);
@@ -750,7 +782,7 @@ export default function Portfolio() {
       <div className="prog" style={{ width: `${prog * 100}%` }} />
 
       <nav>
-        <div className="nav-logo">ALEX.STUDIO</div>
+        <div className="nav-logo">YUGAANK</div>
         <ul className="nav-links">
           <li>
             <a href="#">Work</a>
@@ -787,17 +819,14 @@ export default function Portfolio() {
         ref={pHeroRef}
         style={{ left: 0, width: "100vw", zIndex: 11 }}
       >
-        <p className="hero-tag">Portfolio — 2025 — Available for projects</p>
+        <p className="hero-tag">Full-Stack Developer & AI/ML Engineer</p>
         <h1 className="hero-title">
-          BOLD
+          YUGAANK
           <br />
-          <em>creative</em>
-          <br />
-          WORK
+          RATHORE
         </h1>
         <p className="hero-sub">
-          Designing and engineering digital products that leave an impression —
-          from concept to deployment, with intent in every pixel.
+          Designing and engineering intelligent digital products — from interface to infrastructure — with precision, performance, and purpose.
         </p>
         <p className="hero-hint">↓ Scroll to explore</p>
       </div>
@@ -820,15 +849,12 @@ export default function Portfolio() {
         style={{ left: "100vw", width: "80vw", zIndex: 10, opacity: 0 }}
       >
         <h2 className="about-h2">
-          Making things
+          Designer & Developer —
           <br />
-          that matter.
+          Building things that matter.
         </h2>
         <p className="about-body">
-          I'm a full-stack designer and developer with 7+ years building
-          products for startups and global brands. I obsess over details —
-          pixel-perfect interfaces, performant code, and motion that feels
-          inevitable.
+          I’m a Computer Science student specializing in Artificial Intelligence & Machine Learning, focused on building performant web applications, intelligent systems, and experimental developer tools. I work across frontend, backend, and system design — blending engineering with product thinking.
         </p>
         <div className="skills">
           {SKILLS.map((s) => (
@@ -855,9 +881,9 @@ export default function Portfolio() {
         <div className="between-bg-text">
           DESIGN&nbsp;&nbsp;DEVELOP&nbsp;&nbsp;SHIP&nbsp;&nbsp;REPEAT
         </div>
-        <div className="between-stat">42+</div>
-        <div className="between-lbl">Projects Shipped</div>
-        <div className="between-sub">across 3 continents</div>
+        <div className="between-stat">15+</div>
+        <div className="between-lbl">Projects Built</div>
+        <div className="between-sub">Web • AI/ML • Systems</div>
       </div>
 
       {/* ── PROJECTS L3 ── */}
@@ -875,11 +901,24 @@ export default function Portfolio() {
         <h2 className="proj-h2">Selected Work</h2>
         <div>
           {PROJECTS.map((p) => (
-            <div key={p.n} className="proj-item">
+            <a
+              key={p.n}
+              href={p.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="proj-item"
+              style={{ textDecoration: 'none', color: 'inherit', display: 'grid' }}
+            >
               <span className="proj-n">{p.n}</span>
-              <span className="proj-name">{p.name}</span>
-              <span className="proj-tag">{p.tag}</span>
-            </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                <span className="proj-name">{p.name}</span>
+                <span style={{ fontSize: '0.6rem', opacity: 0.5 }}>{p.desc}</span>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.3rem' }}>
+                <span className="proj-tag">{p.tag}</span>
+                <span style={{ fontSize: '0.5rem', opacity: 0.4 }}>{p.stack}</span>
+              </div>
+            </a>
           ))}
         </div>
       </div>
@@ -910,11 +949,11 @@ export default function Portfolio() {
             <br />
             great.
           </p>
-          <a className="contact-link" href="mailto:hello@alex.studio">
-            hello@alex.studio
+          <a className="contact-link" href="mailto:yugaaank.dev@gmail.com">
+            yugaaank.dev@gmail.com
           </a>
-          <a className="contact-link" href="#">
-            Open to freelance →
+          <a className="contact-link" href="mailto:yugaaank.dev@gmail.com">
+            WORK WITH ME →
           </a>
         </div>
       </div>
@@ -962,21 +1001,18 @@ export default function Portfolio() {
         </p>
         <div className="cfrac-avail">
           <span className="avail-dot" />
-          Currently available for new projects
+          Currently available for internships & collaborations
         </div>
       </div>
 
       {/* Cream half content — slides DOWN from above */}
       <div className="cfrac-light-content" ref={cLightContentRef}>
         <p className="cfrac-light-label">Send a message</p>
-        <a className="cfrac-email" href="mailto:hello@alex.studio">
-          hello@alex.studio
+        <a className="cfrac-email" href="mailto:yugaaank.dev@gmail.com">
+          yugaaank.dev@gmail.com
         </a>
         <div className="cfrac-socials">
-          <a className="cfrac-social" href="#">
-            Dribbble ↗
-          </a>
-          <a className="cfrac-social" href="#">
+          <a className="cfrac-social" href="https://github.com/yugaaank" target="_blank">
             GitHub ↗
           </a>
           <a className="cfrac-social" href="#">
@@ -1001,14 +1037,12 @@ export default function Portfolio() {
           <em>for visiting.</em>
         </h2>
         <p className="ty-sub">
-          Every great product starts with a single conversation. When you're
-          ready — I'm here.
+          Every product starts as an idea. I build the ones that refuse to stay ideas.
         </p>
         <div className="ty-foot">
-          <span className="ty-copy">© 2025 Alex Studio</span>
+          <span className="ty-copy">© 2026 Yugaank Rathore</span>
           <div className="ty-links">
-            <a href="#">Dribbble</a>
-            <a href="#">GitHub</a>
+            <a href="https://github.com/yugaaank" target="_blank">GitHub</a>
             <a href="#">LinkedIn</a>
           </div>
         </div>
