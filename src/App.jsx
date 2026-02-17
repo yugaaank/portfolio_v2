@@ -397,30 +397,14 @@ nav {
 const PROJECTS = [
   {
     n: "01",
-    name: "InterventionGPT",
-    tag: "AI / RAG",
-    desc: "RAG-based app for road safety intervention strategies",
-    stack: "Python • Chromadb • Transformers",
-    link: "https://github.com/yugaaank/InterventionGPT"
+    name: "FFflow",
+    tag: "Rust / Systems",
+    desc: "FFmpeg workflow automation tool",
+    stack: "Rust • CLI",
+    link: "https://github.com/yugaaank/ffflow"
   },
   {
     n: "02",
-    name: "Code Relay",
-    tag: "Full Stack",
-    desc: "Enterprise task management with complex workflows",
-    stack: "React • Node.js • MySQL",
-    link: "https://github.com/yugaaank/code-relay-foobar"
-  },
-  {
-    n: "03",
-    name: "RecoveryLens",
-    tag: "Web App",
-    desc: "Intelligent recovery tracking system",
-    stack: "TypeScript • Next.js",
-    link: "https://github.com/yugaaank/recoveryLens"
-  },
-  {
-    n: "04",
     name: "ClearView",
     tag: "Python / AI",
     desc: "Data clarity and visualization tool",
@@ -428,12 +412,28 @@ const PROJECTS = [
     link: "https://github.com/yugaaank/clearView"
   },
   {
+    n: "03",
+    name: "InterventionGPT",
+    tag: "AI / RAG",
+    desc: "RAG-based road safety intervention strategies",
+    stack: "Python • Chromadb",
+    link: "https://github.com/yugaaank/InterventionGPT"
+  },
+  {
+    n: "04",
+    name: "AlgoScan",
+    tag: "ML / Security",
+    desc: "Cryptographic algorithm identification pipeline",
+    stack: "Python • Flask • ML",
+    link: "https://github.com/yugaaank/AlgoScan"
+  },
+  {
     n: "05",
-    name: "ffflow",
-    tag: "Systems / Rust",
-    desc: "FFmpeg workflow automation tool",
-    stack: "Rust • CLI",
-    link: "https://github.com/yugaaank/ffflow"
+    name: "Vora",
+    tag: "Web App",
+    desc: "Modern web application",
+    stack: "TypeScript • Next.js",
+    link: "https://github.com/yugaaank/vora"
   },
 ];
 
