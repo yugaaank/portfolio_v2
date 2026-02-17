@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
+import { useLenis } from 'lenis/react';
 
 /*
   SECTIONS
@@ -411,6 +412,8 @@ const SKILLS = [
 
 const cl = (v) => Math.min(Math.max(v, 0), 1);
 const lerp = (a, b, t) => a + (b - a) * cl(t);
+const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+const easeInCubic = (t) => t * t * t;
 
 export default function Portfolio() {
   /* scroll spacer refs */
@@ -507,18 +510,25 @@ export default function Portfolio() {
        tPC: slides off right as contact takes over
     ─────────────────────────────────────────*/
     let l2L, l2W;
+
+    // Eased progress values for About section
+    const tHA_eased = easeOutCubic(tHA); // Fast entry, slow finish
+    const tAB_eased = easeInCubic(tAB);  // Slow start, fast exit
+    const tBP_in = easeInCubic(tBP);     // Between exit (slow peel)
+    const tPC_in = easeInCubic(tPC);     // Projects exit (fast away)
+
     if (tPC > 0) {
-      l2L = lerp(70, 100, tPC);
-      l2W = lerp(30, 0, tPC);
+      l2L = lerp(70, 100, tPC_in);
+      l2W = lerp(30, 0, tPC_in);
     } else if (tBP > 0) {
-      l2L = lerp(0, 70, tBP);
-      l2W = lerp(100, 30, tBP);
+      l2L = lerp(0, 70, tBP_in);
+      l2W = lerp(100, 30, tBP_in);
     } else if (tAB > 0) {
-      l2L = lerp(20, 0, tAB);
-      l2W = lerp(80, 100, tAB);
+      l2L = lerp(20, 0, tAB_eased);
+      l2W = lerp(80, 100, tAB_eased);
     } else {
-      l2L = lerp(100, 20, tHA);
-      l2W = lerp(0, 80, tHA);
+      l2L = lerp(100, 20, tHA_eased);
+      l2W = lerp(0, 80, tHA_eased);
     }
     applyLayer(l2Ref, l2L, l2W);
 
@@ -526,8 +536,10 @@ export default function Portfolio() {
        tBP: slides in from left → 70vw
        tPC: slides back off left as contact takes over
     ─────────────────────────────────────────*/
-    const l3Base = lerp(-70, 0, tBP);
-    const l3L = lerp(l3Base, -70, tPC);
+    const tBP_out = easeOutCubic(tBP);   // Lime entry (fast in)
+
+    const l3Base = lerp(-70, 0, tBP_out);
+    const l3L = lerp(l3Base, -70, tPC_in);
     applyLayer(l3Ref, l3L, 70);
 
     /* ── CONTENT PANELS ─────────────────────*/
@@ -540,6 +552,7 @@ export default function Portfolio() {
 
     // About L2 main
     const al2A = cl((tHA - 0.35) / 0.45) * cl(1 - tAB * 3);
+    // Note: We use the eased values for position/width to match the layer
     applyPanel(pAL2Ref, l2L, l2W, al2A);
 
     // Between
@@ -571,17 +584,19 @@ export default function Portfolio() {
     // Diagonal goes from (100%, 0%) to (0%, 100%)
     // Dark fills: top-right corner → top-left corner → bottom-left corner
     // We grow it by pushing corners away from the diagonal
-    const darkExpand = lerp(0, 100, tCO); // how far corners move out
+    const tCO_out = easeOutCubic(tCO); // Fracture fast open -> slow finish
+
+    const darkExpand = lerp(0, 100, tCO_out); // how far corners move out
     const darkClip = `polygon(
-      ${lerp(100, 0, tCO)}% 0%,
+      ${lerp(100, 0, tCO_out)}% 0%,
       0% 0%,
-      0% ${lerp(0, 100, tCO)}%
+      0% ${lerp(0, 100, tCO_out)}%
     )`;
-    const lightExpand = lerp(0, 100, tCO);
+    const lightExpand = lerp(0, 100, tCO_out);
     const lightClip = `polygon(
-      100% ${lerp(100, 0, tCO)}%,
+      100% ${lerp(100, 0, tCO_out)}%,
       100% 100%,
-      ${lerp(0, 100, tCO)}% 100%
+      ${lerp(0, 100, tCO_out)}% 100%
     )`;
 
     if (cDarkRef.current) {
@@ -624,11 +639,60 @@ export default function Portfolio() {
        clip-path inset opens from center outward (vertical)
     ─────────────────────────────────────────*/
     if (tyStageRef.current) {
-      const inset = lerp(50, 0, tTY);
+      const tTY_out = easeOutCubic(tTY); // Shutter fast open
+      const inset = lerp(50, 0, tTY_out);
       tyStageRef.current.style.clipPath = `inset(${inset}% 0 ${inset}% 0)`;
       tyStageRef.current.classList.toggle("live", tTY > 0.05);
     }
   }, []);
+
+  /* ── SCROLL SNAP LOGIC (JS) ── */
+  const lenis = useLenis();
+
+  useEffect(() => {
+    if (!lenis) return;
+
+    let snapTimeout;
+
+    const handleScroll = () => {
+      clearTimeout(snapTimeout);
+      // Wait for scroll to largely stop (e.g., 200ms)
+      snapTimeout = setTimeout(() => {
+        // Find closest section
+        const sections = [heroRef, aboutRef, betweenRef, projRef, contactRef, tyRef]
+          .map(r => r.current)
+          .filter(Boolean);
+
+        const scrollY = window.scrollY;
+        let closest = null;
+        let minDist = Infinity;
+
+        sections.forEach(sec => {
+          const dist = Math.abs(sec.offsetTop - scrollY);
+          if (dist < minDist) {
+            minDist = dist;
+            closest = sec;
+          }
+        });
+
+        // If we are close enough to a section (e.g. within 30vh), snap to it
+        // Duration 2.5s and easeInOutQuint provides a very slow, heavy, non-snappy glide.
+        if (closest && minDist < window.innerHeight * 0.3) {
+          lenis.scrollTo(closest, {
+            duration: 2.5,
+            easing: (t) => t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2, // easeInOutQuint
+            lock: false,
+          });
+        }
+      }, 200);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(snapTimeout);
+    };
+  }, [lenis]);
 
   function applyLayer(ref, leftVw, widthVw) {
     if (!ref.current) return;
