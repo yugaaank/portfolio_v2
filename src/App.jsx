@@ -56,7 +56,7 @@ nav {
 .nav-links { display: flex; gap: 2.5rem; list-style: none; }
 .nav-links a {
   color: #f0e9d6; text-decoration: none;
-  font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+  font-size: .95rem; letter-spacing: .18em; text-transform: uppercase;
   opacity: .5; transition: opacity .2s;
 }
 .nav-links a:hover { opacity: 1; }
@@ -91,7 +91,7 @@ nav {
 /* ── HERO ── */
 .p-hero { z-index: 11; color: #f0e9d6; justify-content: flex-end; }
 .hero-tag {
-  font-size: .62rem; letter-spacing: .22em; text-transform: uppercase;
+  font-size: 1rem; letter-spacing: .22em; text-transform: uppercase;
   opacity: .4; margin-bottom: 2rem;
 }
 .hero-title {
@@ -108,7 +108,7 @@ nav {
   opacity: .4; max-width: 36ch; margin-bottom: 2.5rem;
 }
 .hero-hint {
-  font-size: .58rem; letter-spacing: .2em; text-transform: uppercase;
+  font-size: .95rem; letter-spacing: .2em; text-transform: uppercase;
   opacity: .3; animation: blink 2s ease infinite;
 }
 @keyframes blink { 0%,100% { opacity: .3; } 50% { opacity: .75; } }
@@ -120,7 +120,7 @@ nav {
   padding: 7rem 1.5rem 3.5rem;
   border-right: 1px solid rgba(240,233,214,.07);
 }
-.strip-label { font-size: .55rem; letter-spacing: .22em; text-transform: uppercase; opacity: .35; }
+.strip-label { font-size: .8rem; letter-spacing: .22em; text-transform: uppercase; opacity: .35; }
 .strip-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem,6vw,8rem); line-height:1; opacity:.1; }
 .strip-role {
   font-family: 'Bebas Neue', sans-serif;
@@ -141,7 +141,9 @@ nav {
 .skill {
   padding: .32rem .85rem;
   border: 1px solid rgba(12,12,12,.18);
-  font-size: .58rem; letter-spacing: .12em; text-transform: uppercase;
+  padding: .32rem .85rem;
+  border: 1px solid rgba(12,12,12,.18);
+  font-size: .95rem; letter-spacing: .12em; text-transform: uppercase;
 }
 
 /* ── BETWEEN ── */
@@ -155,7 +157,7 @@ nav {
 }
 @keyframes slideText { from { transform: translateX(10%); } to { transform: translateX(-40%); } }
 .between-stat { font-family: 'Bebas Neue', sans-serif; font-size: clamp(6rem,16vw,16rem); line-height: 1; position: relative; z-index: 2; }
-.between-lbl { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; opacity: .4; margin-top: .5rem; position: relative; z-index: 2; }
+.between-lbl { font-size: 1.2rem; letter-spacing: .22em; text-transform: uppercase; opacity: .4; margin-top: .5rem; position: relative; z-index: 2; }
 .between-sub { font-family: 'Instrument Serif', serif; font-style: italic; font-size: clamp(1rem,2.5vw,2rem); opacity: .4; margin-top: .8rem; position: relative; z-index: 2; }
 
 /* ── PROJECTS ── */
@@ -176,10 +178,10 @@ nav {
   transition: transform .4s cubic-bezier(.16,1,.3,1);
 }
 .proj-item:hover::before { transform: translateX(0); }
-.proj-n { font-size: .58rem; letter-spacing: .1em; opacity: .3; }
+.proj-n { font-size: 1rem; letter-spacing: .1em; opacity: .3; }
 .proj-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.4rem,2.5vw,2.3rem); letter-spacing: .03em; transition: letter-spacing .3s; }
 .proj-item:hover .proj-name { letter-spacing: .08em; }
-.proj-tag { font-size: .58rem; letter-spacing: .12em; text-transform: uppercase; padding: .28rem .7rem; border: 1px solid rgba(12,12,12,.18); opacity: .5; }
+.proj-tag { font-size: 1rem; letter-spacing: .12em; text-transform: uppercase; padding: .28rem .7rem; border: 1px solid rgba(12,12,12,.18); opacity: .5; }
 
 .p-proj-l2 {
   z-index: 10; color: #0c0c0c;
@@ -190,7 +192,7 @@ nav {
 .contact-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem,8vw,10rem); line-height: 1; opacity: .08; }
 .contact-cta { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.8rem,3.5vw,3.2rem); line-height: 1.05; margin-bottom: 2rem; }
 .contact-link {
-  display: block; font-size: .7rem; letter-spacing: .08em;
+  display: block; font-size: 1.1rem; letter-spacing: .08em;
   color: #0c0c0c; text-decoration: none;
   border-bottom: 1px solid rgba(12,12,12,.2);
   padding-bottom: .5rem; margin-bottom: .6rem;
@@ -250,7 +252,7 @@ nav {
 .cfrac-dark-content.live { pointer-events: auto; }
 
 .cfrac-eyebrow {
-  font-size: .6rem; letter-spacing: .22em; text-transform: uppercase;
+  font-size: 1rem; letter-spacing: .22em; text-transform: uppercase;
   opacity: .4; margin-bottom: 1.5rem;
 }
 .cfrac-big {
@@ -265,7 +267,7 @@ nav {
 }
 .cfrac-avail {
   display: flex; align-items: center; gap: .7rem;
-  font-size: .6rem; letter-spacing: .18em; text-transform: uppercase;
+  font-size: .95rem; letter-spacing: .18em; text-transform: uppercase;
   opacity: .5;
 }
 .avail-dot {
@@ -294,7 +296,7 @@ nav {
 .cfrac-light-content.live { pointer-events: auto; }
 
 .cfrac-light-label {
-  font-size: .6rem; letter-spacing: .22em; text-transform: uppercase;
+  font-size: 1rem; letter-spacing: .22em; text-transform: uppercase;
   opacity: .35; margin-bottom: 2rem;
 }
 .cfrac-email {
@@ -310,7 +312,7 @@ nav {
 .cfrac-email:hover { color: #0c0c0c; border-color: #d4f53c; }
 .cfrac-socials { display: flex; flex-direction: column; gap: 1rem; align-items: flex-end; }
 .cfrac-social {
-  font-size: .62rem; letter-spacing: .15em; text-transform: uppercase;
+  font-size: 1rem; letter-spacing: .15em; text-transform: uppercase;
   color: #0c0c0c; text-decoration: none; opacity: .35;
   transition: opacity .2s, letter-spacing .25s;
 }
@@ -358,7 +360,7 @@ nav {
 }
 .ty-stage.live { pointer-events: auto; }
 
-.ty-counter { position: absolute; top: 2.5rem; left: 3.5rem; font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: #0c0c0c; opacity: .3; }
+.ty-counter { position: absolute; top: 2.5rem; left: 3.5rem; font-size: .95rem; letter-spacing: .2em; text-transform: uppercase; color: #0c0c0c; opacity: .3; }
 
 .ty-headline {
   font-family: 'Bebas Neue', sans-serif;
@@ -381,9 +383,9 @@ nav {
   display: flex; justify-content: space-between; align-items: center;
   border-top: 1px solid rgba(12,12,12,.15); padding-top: 1.5rem;
 }
-.ty-copy { font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; color: #0c0c0c; opacity: .35; }
+.ty-copy { font-size: .95rem; letter-spacing: .1em; text-transform: uppercase; color: #0c0c0c; opacity: .35; }
 .ty-links { display: flex; gap: 2rem; }
-.ty-links a { font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; color: #0c0c0c; text-decoration: none; opacity: .35; transition: opacity .2s; }
+.ty-links a { font-size: .95rem; letter-spacing: .1em; text-transform: uppercase; color: #0c0c0c; text-decoration: none; opacity: .35; transition: opacity .2s; }
 .ty-links a:hover { opacity: 1; }
 
 /* ── SCROLL SPACERS ── */
@@ -914,11 +916,11 @@ export default function Portfolio() {
               <span className="proj-n">{p.n}</span>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
                 <span className="proj-name">{p.name}</span>
-                <span style={{ fontSize: '0.6rem', opacity: 0.5 }}>{p.desc}</span>
+                <span style={{ fontSize: '1rem', opacity: 0.5 }}>{p.desc}</span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.3rem' }}>
                 <span className="proj-tag">{p.tag}</span>
-                <span style={{ fontSize: '0.5rem', opacity: 0.4 }}>{p.stack}</span>
+                <span style={{ fontSize: '0.85rem', opacity: 0.4 }}>{p.stack}</span>
               </div>
             </a>
           ))}
