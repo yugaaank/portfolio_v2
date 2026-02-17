@@ -677,6 +677,8 @@ export default function Portfolio() {
       const inset = lerp(50, 0, tTY_out);
       tyStageRef.current.style.clipPath = `inset(${inset}% 0 ${inset}% 0)`;
       tyStageRef.current.classList.toggle("live", tTY > 0.05);
+      // Fix visual glitch line: hide completely when closed
+      tyStageRef.current.style.visibility = tTY > 0 ? "visible" : "hidden";
     }
   }, []);
 
