@@ -105,10 +105,10 @@ nav {
   opacity: .3; animation: blink 2s ease infinite;
 }
 @keyframes blink { 0%,100% { opacity: .3; } 50% { opacity: .75; } }
-@keyframes breathe { 0%,100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.15); } }
+@keyframes breathe { 0%,100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.2); } }
 
 .cur-ring {
-  position: fixed; width: 38px; height: 38px;
+  position: fixed; width: 64px; height: 64px;
   border: 1px solid rgba(255,255,255,0.8); border-radius: 50%;
   pointer-events: none; z-index: 9998;
   mix-blend-mode: difference;
@@ -769,8 +769,9 @@ export default function Portfolio() {
     let vx = 0, vy = 0; // Velocity
 
     // Spring constants
-    const stiffness = 0.08;
-    const damping = 0.76;
+    // Stiffness 0.1 (stronger pull) + Damping 0.8 (less friction) = smooth, continuous tracking
+    const stiffness = 0.1;
+    const damping = 0.8;
 
     const move = (e) => {
       tx = e.clientX;
@@ -835,7 +836,7 @@ export default function Portfolio() {
             <a href="#about" onClick={(e) => { e.preventDefault(); lenis?.scrollTo(aboutRef.current, { duration: 2, easing: (t) => t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2 }); }}>About</a>
           </li>
           <li>
-            <a href="#contact" onClick={(e) => { e.preventDefault(); lenis?.scrollTo(contactRef.current, { duration: 2, easing: (t) => t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2 }); }}>Contact</a>
+            <a href="#contact" onClick={(e) => { e.preventDefault(); lenis?.scrollTo(contactRef.current.offsetTop + window.innerHeight * 1.5, { duration: 2, easing: (t) => t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2 }); }}>Contact</a>
           </li>
         </ul>
       </nav>
