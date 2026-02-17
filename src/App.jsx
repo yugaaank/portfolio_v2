@@ -28,14 +28,16 @@ body {
 /* ── CURSOR ── */
 .cur {
   position: fixed; width: 10px; height: 10px;
-  background: #d4f53c; border-radius: 50%;
+  background: #ffffff; border-radius: 50%;
   pointer-events: none; z-index: 9999;
+  mix-blend-mode: difference;
   transform: translate(-50%, -50%);
 }
 .cur-ring {
   position: fixed; width: 38px; height: 38px;
-  border: 1px solid rgba(212,245,60,.4); border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.8); border-radius: 50%;
   pointer-events: none; z-index: 9998;
+  mix-blend-mode: difference;
   transform: translate(-50%, -50%);
   transition: left .14s ease, top .14s ease;
 }
