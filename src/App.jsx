@@ -33,14 +33,7 @@ body {
   mix-blend-mode: difference;
   transform: translate(-50%, -50%);
 }
-.cur-ring {
-  position: fixed; width: 38px; height: 38px;
-  border: 1px solid rgba(255,255,255,0.8); border-radius: 50%;
-  pointer-events: none; z-index: 9998;
-  mix-blend-mode: difference;
-  transform: translate(-50%, -50%);
-  transition: left .14s ease, top .14s ease;
-}
+
 
 /* ── NAV ── */
 nav {
@@ -112,6 +105,17 @@ nav {
   opacity: .3; animation: blink 2s ease infinite;
 }
 @keyframes blink { 0%,100% { opacity: .3; } 50% { opacity: .75; } }
+@keyframes breathe { 0%,100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.15); } }
+
+.cur-ring {
+  position: fixed; width: 38px; height: 38px;
+  border: 1px solid rgba(255,255,255,0.8); border-radius: 50%;
+  pointer-events: none; z-index: 9998;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+  animation: breathe 3s ease-in-out infinite;
+  will-change: left, top, transform;
+}
 
 /* ── ABOUT STRIP ── */
 .p-about-l1 {
@@ -759,22 +763,58 @@ export default function Portfolio() {
   }, [tick]);
 
   useEffect(() => {
-    let rx = 0,
-      ry = 0;
+    // Spring physics state
+    let tx = 0, ty = 0; // Target (mouse) position
+    let x = 0, y = 0;   // Current ring position
+    let vx = 0, vy = 0; // Velocity
+
+    // Spring constants
+    const stiffness = 0.08;
+    const damping = 0.76;
+
     const move = (e) => {
+      tx = e.clientX;
+      ty = e.clientY;
       if (curRef.current) {
-        curRef.current.style.left = e.clientX + "px";
-        curRef.current.style.top = e.clientY + "px";
-      }
-      rx += (e.clientX - rx) * 0.16;
-      ry += (e.clientY - ry) * 0.16;
-      if (ringRef.current) {
-        ringRef.current.style.left = rx + "px";
-        ringRef.current.style.top = ry + "px";
+        curRef.current.style.left = tx + "px";
+        curRef.current.style.top = ty + "px";
       }
     };
+
+    let rafId;
+    const loop = () => {
+      // Spring force: F = -k * displacement
+      const dx = tx - x;
+      const dy = ty - y;
+
+      const ax = dx * stiffness;
+      const ay = dy * stiffness;
+
+      vx += ax;
+      vy += ay;
+
+      // Friction
+      vx *= damping;
+      vy *= damping;
+
+      x += vx;
+      y += vy;
+
+      if (ringRef.current) {
+        ringRef.current.style.left = x + "px";
+        ringRef.current.style.top = y + "px";
+      }
+
+      rafId = requestAnimationFrame(loop);
+    };
+
     window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
+    loop(); // Start the physics loop
+
+    return () => {
+      window.removeEventListener("mousemove", move);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (
@@ -789,13 +829,13 @@ export default function Portfolio() {
         <div className="nav-logo">YUGAANK</div>
         <ul className="nav-links">
           <li>
-            <a href="#">Work</a>
+            <a href="#work" onClick={(e) => { e.preventDefault(); lenis?.scrollTo(projRef.current, { duration: 2, easing: (t) => t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2 }); }}>Work</a>
           </li>
           <li>
-            <a href="#">About</a>
+            <a href="#about" onClick={(e) => { e.preventDefault(); lenis?.scrollTo(aboutRef.current, { duration: 2, easing: (t) => t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2 }); }}>About</a>
           </li>
           <li>
-            <a href="#">Contact</a>
+            <a href="#contact" onClick={(e) => { e.preventDefault(); lenis?.scrollTo(contactRef.current, { duration: 2, easing: (t) => t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2 }); }}>Contact</a>
           </li>
         </ul>
       </nav>
