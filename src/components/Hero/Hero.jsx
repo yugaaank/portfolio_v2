@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import Scene from './Scene';
 
 const Hero = forwardRef((props, ref) => {
   return (
@@ -7,6 +8,7 @@ const Hero = forwardRef((props, ref) => {
       ref={ref}
       style={{ left: 0, width: "100vw", zIndex: 11 }}
     >
+      <Scene />
       <p className="hero-tag">Full-Stack Developer & AI/ML Engineer</p>
       <h1 className="hero-title">
         YUGANK
