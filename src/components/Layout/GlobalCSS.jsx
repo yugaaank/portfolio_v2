@@ -78,10 +78,27 @@ nav {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(5rem, 13.5vw, 17rem);
   line-height: .87; letter-spacing: -.01em; margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+}
+.hero-invert-circle {
+  position: absolute;
+  top: 50%;
+  right: -0.4em;
+  transform: translateY(-50%);
+  width: 2.2em;
+  height: 2.2em;
+  background-color: #f0e9d6;
+  border-radius: 50%;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 2;
 }
 .hero-title em {
   font-family: 'Instrument Serif', serif;
   font-style: italic; color: #d4f53c; font-size: .52em;
+
 }
 .hero-sub {
   font-size: .8rem; line-height: 1.85;
@@ -195,7 +212,7 @@ nav {
 .showcase-panel {
   position: fixed; top: 0; bottom: 0; left: 0; right: 0;
   z-index: 15;
-  background: #111; 
+  background: radial-gradient(circle at center, #1a1a1a 0%, #0c0c0c 100%);
   color: #f0e9d6;
   overflow: hidden;
   clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
@@ -220,14 +237,20 @@ nav {
   position: absolute;
   width: 70vw; max-width: 1000px;
   height: 70vh; max-height: 700px;
-  background: #1a1a1a;
-  border: 1px solid rgba(255,255,255,0.08);
+  background: linear-gradient(145deg, #1a1a1a, #111);
+  border: 1px solid rgba(212, 245, 60, 0.1);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
   will-change: transform, filter;
   /* Initial state handled by JS, but default could be off-screen */
   transform: translateY(120%);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.showcase-card:hover {
+  border-color: rgba(212, 245, 60, 0.4);
+  box-shadow: 0 0 30px rgba(212, 245, 60, 0.05), 0 20px 50px rgba(0,0,0,0.6);
 }
 
 .card-inner {
@@ -242,6 +265,10 @@ nav {
 }
 .card-img {
   width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.showcase-card:hover .card-img {
+  transform: scale(1.03);
 }
 
 .card-content {
@@ -251,14 +278,31 @@ nav {
 }
 .card-n {
   position: absolute; top: 2rem; right: 2rem;
-  font-family: 'Bebas Neue', sans-serif; font-size: 6rem; line-height: 1; opacity: 0.05;
+  font-family: 'Bebas Neue', sans-serif; font-size: 6rem; line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(212, 245, 60, 0.15);
+  opacity: 1;
 }
-.card-content h3 { font-family: 'Bebas Neue', sans-serif; font-size: 4rem; line-height: 0.9; margin-bottom: 1.5rem; }
+.card-content h3 { font-family: 'Bebas Neue', sans-serif; font-size: 4rem; line-height: 0.9; margin-bottom: 1.5rem; text-shadow: 0 0 20px rgba(0,0,0,0.5); }
 .card-desc { font-size: 1rem; line-height: 1.6; opacity: 0.7; margin-bottom: 3rem; max-width: 32ch; }
 .card-meta { display: flex; gap: 2rem; align-items: center; margin-top: auto; }
-.card-stack { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.4; }
-.card-link { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #d4f53c; text-decoration: none; border-bottom: 1px solid rgba(212,245,60,0.3); padding-bottom: 0.2rem; }
-.card-link:hover { opacity: 0.8; border-color: #d4f53c; }
+.card-stack {
+  font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;
+  color: #d4f53c; opacity: 0.8;
+  font-weight: 500;
+}
+.card-link {
+  font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em;
+  color: #d4f53c; text-decoration: none;
+  border-bottom: 1px solid rgba(212,245,60,0.3);
+  padding-bottom: 0.2rem;
+  transition: all 0.3s ease;
+}
+.card-link:hover {
+  opacity: 1;
+  border-color: #d4f53c;
+  box-shadow: 0 2px 10px rgba(212, 245, 60, 0.2);
+}
 
 /* ════════════════════════════════════════════
    CONTACT SECTION

@@ -2,47 +2,46 @@ export const PROJECTS = [
     {
         n: "01",
         name: "FFflow",
-        tag: "Rust / Systems",
-        desc: "FFmpeg workflow automation tool",
-        stack: "Rust • CLI",
+        tag: "Rust • TUI • FFmpeg",
+        desc: "Terminal-based FFmpeg workflow automation tool for professional media engineering.",
+        stack: "Rust • Ratatui • Tokio",
         link: "https://github.com/yugaaank/ffflow",
-        // Adding placeholder images for showcase if real ones aren't available yet
-        img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2070"
+        img: "/ffflow.png"
     },
     {
         n: "02",
         name: "ClearView",
-        tag: "Python / AI",
-        desc: "Data clarity and visualization tool",
-        stack: "Python • Streamlit",
+        tag: "Python • AI • Viz",
+        desc: "Data clarity and visualization tool for complex datasets.",
+        stack: "Python • Streamlit • Pandas",
         link: "https://github.com/yugaaank/clearView",
-        img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2070"
+        img: "/clearView.png"
     },
     {
         n: "03",
         name: "InterventionGPT",
-        tag: "AI / RAG",
-        desc: "RAG-based road safety intervention strategies",
-        stack: "Python • Chromadb",
+        tag: "GenAI • RAG • Engineering",
+        desc: "RAG system generating IRC-compliant road safety interventions using Llama 3.1.",
+        stack: "Python • Streamlit • ChromaDB • Llama 3",
         link: "https://github.com/yugaaank/InterventionGPT",
-        img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1965"
+        img: "/interventionGPT.png"
     },
     {
         n: "04",
         name: "AlgoScan",
-        tag: "ML / Security",
-        desc: "Cryptographic algorithm identification pipeline",
-        stack: "Python • Flask • ML",
+        tag: "ML • Crypto • Security",
+        desc: "Automated cryptographic algorithm identification from raw ciphertext using CatBoost.",
+        stack: "Python • Flask • CatBoost • Scikit-learn",
         link: "https://github.com/yugaaank/AlgoScan",
         img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=2070"
     },
     {
         n: "05",
         name: "Vora",
-        tag: "Web App",
-        desc: "Modern web application",
-        stack: "TypeScript • Next.js",
+        tag: "Next.js • Streaming",
+        desc: "Video streaming platform focused on fast content discovery and instant playback.",
+        stack: "TypeScript • Next.js • Tailwind • TMDB API",
         link: "https://github.com/yugaaank/vora",
-        img: "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=1964"
+        img: "/v0ra.png"
     },
 ];

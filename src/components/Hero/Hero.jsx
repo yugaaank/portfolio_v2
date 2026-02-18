@@ -12,6 +12,7 @@ const Hero = forwardRef((props, ref) => {
         YUGAANK
         <br />
         RATHORE
+        <div className="hero-invert-circle" />
       </h1>
       <p className="hero-sub">
         Designing and engineering intelligent digital products — from interface to infrastructure — with precision, performance, and purpose.
