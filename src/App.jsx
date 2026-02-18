@@ -89,8 +89,8 @@ export default function Portfolio() {
     // projects → contact: starts halfway through projects scroll
     const tPC = cl((sy - (projTop + projH * 0.5)) / (projH * 0.42)); // projects → contact
     // contact fracture open
-    const tCO = cl((sy - contactTop) / (vh * 0.8)); // fracture opens
-    const tCC = cl((sy - (contactTop + vh * 0.5)) / (vh * 0.9)); // fracture content
+    const tCO = cl((sy - contactTop) / (vh * 0.5)); // fracture opens
+    const tCC = cl((sy - (contactTop + vh * 0.2)) / (vh * 0.6)); // fracture content
     // thank-you shutter
     const tTY = cl((sy - (tyTop - vh * 0.1)) / (vh * 0.7)); // shutter opens
 

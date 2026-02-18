@@ -209,7 +209,7 @@ nav {
 ════════════════════════════════════════════ */
 
 /* The scroll spacer section */
-.s-contact { height: 300vh; }
+.s-contact { height: 180vh; }
 
 /* Dark half — top-left triangle */
 /* Dark half — now full screen background */
@@ -359,7 +359,7 @@ nav {
 .s-about   { height: 220vh; }
 .s-between { height: 160vh; }
 .s-proj    { height: 220vh; }
-.s-contact { height: 300vh; }
+.s-contact { height: 180vh; }
 .s-thankyou { height: 260vh; }
 `;
 
