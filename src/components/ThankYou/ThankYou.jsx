@@ -15,10 +15,11 @@ const ThankYou = forwardRef((props, ref) => {
         Every product starts as an idea. I build the ones that refuse to stay ideas.
       </p>
       <div className="ty-foot">
-        <span className="ty-copy">© 2026 Yugaank Rathore</span>
+        <span className="ty-copy">© 2026 Yugank Rathore</span>
         <div className="ty-links">
-          <a href="https://github.com/yugaaank" target="_blank">GitHub</a>
-          <a href="#">LinkedIn</a>
+          <a href="https://github.com/yugaaank" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/yugaaank" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://x.com/yugaaank" target="_blank" rel="noopener noreferrer">Twitter</a>
         </div>
       </div>
     </div>

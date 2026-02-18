@@ -101,12 +101,18 @@ export default function Portfolio() {
     const tS_prog = cl((sy - showcaseTop) / (showcaseH - vh));
 
     // showcase → contact:
+    // We want Showcase to fade out slightly as Contact fades in
+    // Adjusted to match the new tCO timing
     const tSC = cl((sy - (showcaseTop + showcaseH * 0.85)) / (showcaseH * 0.15));
 
     // contact fracture open (from showcase)
-    // We adjust contact trigger relative to contactTop (which is after showcase now)
-    const tCO = cl((sy - contactTop) / (vh * 0.5)); // fracture opens
+    // We adjust contact trigger relative to contactTop
+    // Start fading in *before* we fully hit the section (-0.8vh) to create overlap
+    const tCO = cl((sy - (contactTop - vh * 0.8)) / (vh * 0.8)); // Smooth fade 0->1
+
+    // Content animation trigger
     const tCC = cl((sy - (contactTop + vh * 0.2)) / (vh * 0.6)); // fracture content
+
     // thank-you shutter
     const tTY = cl((sy - (tyTop - vh * 0.1)) / (vh * 0.7)); // shutter opens
 
@@ -215,46 +221,63 @@ export default function Portfolio() {
           let y = 0;    // Default position (visible)
           let scale = 1;
           let filter = 100; // brightness
+          let rotX = 0; // 3D rotation
+          let imgTransY = 0; // Internal image parallax
+
+          // Get the image element for parallax
+          const img = card.querySelector('.card-img');
 
           if (i === 0) {
             // Base card. Always visible (y=0).
-            // Reacts (scales down) when Card 1 enters (stackProg > 0)
             if (stackProg > 0) {
               const depth = cl(stackProg); // 0 -> 1 as Card 1 enters
               scale = 1 - (depth * 0.05);
               filter = 100 - (depth * 20);
+              // Base card tilts slightly back as next one covers it
+              rotX = depth * 2;
+              // Image moves slightly down as card shrinks
+              imgTransY = depth * 5;
             }
           } else {
-            // Subsequent cards (1, 2, 3...)
-            // Enter when stackProg > i - 1
-            // e.g. Card 1 enters when stackProg > 0 (0 to 1)
-            // Card 2 enters when stackProg > 1 (1 to 2)
-
             const entryThreshold = i - 1;
 
             if (stackProg < entryThreshold) {
               // Not started entering yet
               y = 110; // Offscreen
+              rotX = 15; // Start tilted
             } else if (stackProg >= entryThreshold && stackProg < i) {
               // Currently Entering
               const entryP = easeOutCubic(stackProg - entryThreshold);
               y = lerp(110, 0, entryP);
+              // Rotates from 15deg to 0deg as it settles
+              rotX = lerp(15, 0, entryP);
+              // Image moves inside the card (parallax)
+              imgTransY = lerp(-15, 0, entryP);
             } else {
               // Fully Entered (stackProg > i)
               y = 0;
+              rotX = 0;
 
               // Scale down if NEXT card is entering
-              // Next card (i+1) enters when stackProg > i
               const depth = cl(stackProg - i);
               scale = 1 - (depth * 0.05);
               filter = 100 - (depth * 20);
+              rotX = depth * 2;
+              imgTransY = depth * 5;
             }
           }
 
           // Apply styles
-          card.style.transform = `translateY(${y}%) scale(${scale})`;
+          // Add perspective to container if not present, or use transform directly
+          card.style.transform = `translateY(${y}%) scale(${scale}) perspective(1000px) rotateX(${rotX}deg)`;
           card.style.filter = `brightness(${filter}%)`;
           card.style.zIndex = i + 10;
+
+          if (img) {
+            // Apply parallax to image
+            // We use scale(1.1) to ensure edges don't show during movement
+            img.style.transform = `translateY(${imgTransY}%) scale(1.1)`;
+          }
         });
       }
 
@@ -274,7 +297,8 @@ export default function Portfolio() {
 
     // Background fade
     if (cDarkRef.current) {
-      cDarkRef.current.style.opacity = tCO > 0 ? 1 : 0;
+      // Use smooth tCO progression instead of binary switch
+      cDarkRef.current.style.opacity = tCO;
     }
 
     // Content fade & slide
@@ -430,7 +454,7 @@ export default function Portfolio() {
       <GlobalCSS />
       <Cursor ref={{ curRef, ringRef }} />
       <ProgressBar prog={prog} />
-      <Nav lenis={lenis} projRef={projRef} aboutRef={aboutRef} contactRef={contactRef} />
+      <Nav lenis={lenis} heroRef={heroRef} projRef={projRef} aboutRef={aboutRef} contactRef={contactRef} />
       <Layers ref={{ l1Ref, l2Ref, l3Ref }} />
       <Hero ref={pHeroRef} />
       <AboutStrip ref={pAL1Ref} />

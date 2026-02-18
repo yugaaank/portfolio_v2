@@ -9,7 +9,7 @@ const Hero = forwardRef((props, ref) => {
     >
       <p className="hero-tag">Full-Stack Developer & AI/ML Engineer</p>
       <h1 className="hero-title">
-        YUGAANK
+        YUGANK
         <br />
         RATHORE
         <div className="hero-invert-circle" />

@@ -27,10 +27,10 @@ const ProjectsStrip = forwardRef((props, ref) => {
           <br />
           great.
         </p>
-        <a className="contact-link" href="mailto:yugaaank.dev@gmail.com">
-          yugaaank.dev@gmail.com
+        <a className="contact-link" href="mailto:yugaankrathore0@gmail.com">
+          yugaankrathore0@gmail.com
         </a>
-        <a className="contact-link" href="mailto:yugaaank.dev@gmail.com">
+        <a className="contact-link" href="mailto:yugaankrathore0@gmail.com">
           WORK WITH ME →
         </a>
       </div>

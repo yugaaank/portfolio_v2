@@ -212,7 +212,7 @@ nav {
 .showcase-panel {
   position: fixed; top: 0; bottom: 0; left: 0; right: 0;
   z-index: 15;
-  background: radial-gradient(circle at center, #1a1a1a 0%, #0c0c0c 100%);
+  background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 100%);
   color: #f0e9d6;
   overflow: hidden;
   clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
@@ -220,9 +220,19 @@ nav {
   display: flex; justify-content: center; align-items: center;
 }
 
+/* Noise Overlay */
+.showcase-panel::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 1;
+}
+
 .showcase-intro-static {
   position: absolute; top: 3.5rem; left: 3.5rem; z-index: 2;
-  mix-blend-mode: exclusion; /* Cool effect over images */
+  mix-blend-mode: exclusion;
   pointer-events: none;
 }
 .showcase-intro-static h2 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
@@ -231,26 +241,44 @@ nav {
 .showcase-stage {
   position: absolute; inset: 0;
   display: flex; justify-content: center; align-items: center;
+  z-index: 2; /* Ensure content sits above noise if needed, though noise is z-1 and panel is parent */
 }
 
+/* Glassmorphism Card */
 .showcase-card {
   position: absolute;
   width: 70vw; max-width: 1000px;
   height: 70vh; max-height: 700px;
-  background: linear-gradient(145deg, #1a1a1a, #111);
-  border: 1px solid rgba(212, 245, 60, 0.1);
-  border-radius: 8px;
+  
+  /* Glass Effect */
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  
+  /* Subtle border and deep shadow */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.15); /* Top highlight */
+  border-radius: 12px;
+  
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  box-shadow: 
+    0 20px 50px -10px rgba(0,0,0,0.8),
+    0 0 0 1px rgba(0,0,0,0.2); /* Shadow border */
+    
   will-change: transform, filter;
-  /* Initial state handled by JS, but default could be off-screen */
   transform: translateY(120%);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: 
+    border-color 0.4s ease, 
+    transform 0.4s ease, 
+    box-shadow 0.4s ease;
 }
 
 .showcase-card:hover {
-  border-color: rgba(212, 245, 60, 0.4);
-  box-shadow: 0 0 30px rgba(212, 245, 60, 0.05), 0 20px 50px rgba(0,0,0,0.6);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 0 40px -10px rgba(255, 255, 255, 0.1),
+    0 30px 60px -15px rgba(0,0,0,0.9);
+  transform: translateY(0) scale(1.005); /* Slight lift handled by JS usually, but here for hover if static */
 }
 
 .card-inner {
@@ -265,10 +293,12 @@ nav {
 }
 .card-img {
   width: 100%; height: 100%; object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.7s cubic-bezier(0.2, 1, 0.3, 1);
+  filter: saturate(0.8) contrast(1.1);
 }
 .showcase-card:hover .card-img {
-  transform: scale(1.03);
+  transform: scale(1.05);
+  filter: saturate(1.1) contrast(1.1);
 }
 
 .card-content {
@@ -472,10 +502,10 @@ nav {
 .s-hero    { height: 220vh; }
 .s-about   { height: 220vh; }
 .s-between { height: 160vh; }
-.s-proj    { height: 220vh; }
-.s-showcase { height: 450vh; }
+.s-proj    { height: 260vh; }
+.s-showcase { height: 700vh; }
 .s-contact { height: 180vh; }
-.s-thankyou { height: 260vh; }
+.s-thankyou { height: 250vh; }
 `;
 
 const GlobalCSS = () => {
