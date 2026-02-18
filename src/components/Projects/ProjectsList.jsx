@@ -1,47 +1,6 @@
 import { forwardRef } from 'react';
 
-const PROJECTS = [
-  {
-    n: "01",
-    name: "FFflow",
-    tag: "Rust / Systems",
-    desc: "FFmpeg workflow automation tool",
-    stack: "Rust • CLI",
-    link: "https://github.com/yugaaank/ffflow"
-  },
-  {
-    n: "02",
-    name: "ClearView",
-    tag: "Python / AI",
-    desc: "Data clarity and visualization tool",
-    stack: "Python • Streamlit",
-    link: "https://github.com/yugaaank/clearView"
-  },
-  {
-    n: "03",
-    name: "InterventionGPT",
-    tag: "AI / RAG",
-    desc: "RAG-based road safety intervention strategies",
-    stack: "Python • Chromadb",
-    link: "https://github.com/yugaaank/InterventionGPT"
-  },
-  {
-    n: "04",
-    name: "AlgoScan",
-    tag: "ML / Security",
-    desc: "Cryptographic algorithm identification pipeline",
-    stack: "Python • Flask • ML",
-    link: "https://github.com/yugaaank/AlgoScan"
-  },
-  {
-    n: "05",
-    name: "Vora",
-    tag: "Web App",
-    desc: "Modern web application",
-    stack: "TypeScript • Next.js",
-    link: "https://github.com/yugaaank/vora"
-  },
-];
+import { PROJECTS } from '../../utils/data';
 
 const ProjectsList = forwardRef((props, ref) => {
   return (

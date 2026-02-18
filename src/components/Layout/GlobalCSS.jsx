@@ -191,8 +191,78 @@ nav {
 }
 .contact-link:hover { letter-spacing: .14em; border-color: rgba(12,12,12,.5); }
 
+/* ── SHOWCASE (Parallax Stack) ── */
+.showcase-panel {
+  position: fixed; top: 0; bottom: 0; left: 0; right: 0;
+  z-index: 15;
+  background: #111; 
+  color: #f0e9d6;
+  overflow: hidden;
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+  will-change: clip-path;
+  display: flex; justify-content: center; align-items: center;
+}
+
+.showcase-intro-static {
+  position: absolute; top: 3.5rem; left: 3.5rem; z-index: 2;
+  mix-blend-mode: exclusion; /* Cool effect over images */
+  pointer-events: none;
+}
+.showcase-intro-static h2 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+.showcase-intro-static p { font-family: 'Instrument Serif', serif; font-style: italic; opacity: 0.6; }
+
+.showcase-stage {
+  position: absolute; inset: 0;
+  display: flex; justify-content: center; align-items: center;
+}
+
+.showcase-card {
+  position: absolute;
+  width: 70vw; max-width: 1000px;
+  height: 70vh; max-height: 700px;
+  background: #1a1a1a;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  will-change: transform, filter;
+  /* Initial state handled by JS, but default could be off-screen */
+  transform: translateY(120%);
+}
+
+.card-inner {
+  height: 100%;
+  display: grid; grid-template-columns: 1fr 1fr;
+}
+
+.card-img-wrap {
+  width: 100%; height: 100%;
+  position: relative; overflow: hidden;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+.card-img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+
+.card-content {
+  padding: 4rem;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative;
+}
+.card-n {
+  position: absolute; top: 2rem; right: 2rem;
+  font-family: 'Bebas Neue', sans-serif; font-size: 6rem; line-height: 1; opacity: 0.05;
+}
+.card-content h3 { font-family: 'Bebas Neue', sans-serif; font-size: 4rem; line-height: 0.9; margin-bottom: 1.5rem; }
+.card-desc { font-size: 1rem; line-height: 1.6; opacity: 0.7; margin-bottom: 3rem; max-width: 32ch; }
+.card-meta { display: flex; gap: 2rem; align-items: center; margin-top: auto; }
+.card-stack { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.4; }
+.card-link { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #d4f53c; text-decoration: none; border-bottom: 1px solid rgba(212,245,60,0.3); padding-bottom: 0.2rem; }
+.card-link:hover { opacity: 0.8; border-color: #d4f53c; }
+
 /* ════════════════════════════════════════════
-   CONTACT SECTION — diagonal fracture concept
+   CONTACT SECTION
+
 
    The screen is split by a diagonal line.
    Top-left half: black with white text sliding UP from below
@@ -359,6 +429,7 @@ nav {
 .s-about   { height: 220vh; }
 .s-between { height: 160vh; }
 .s-proj    { height: 220vh; }
+.s-showcase { height: 450vh; }
 .s-contact { height: 180vh; }
 .s-thankyou { height: 260vh; }
 `;
