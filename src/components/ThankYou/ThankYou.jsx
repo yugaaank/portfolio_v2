@@ -18,8 +18,8 @@ const ThankYou = forwardRef((props, ref) => {
         <span className="ty-copy">© 2026 Yugank Rathore</span>
         <div className="ty-links">
           <a href="https://github.com/yugaaank" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://www.linkedin.com/in/yugaaank" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://x.com/yugaaank" target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href="https://www.linkedin.com/in/yugank-rathore-617614317/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+
         </div>
       </div>
     </div>
