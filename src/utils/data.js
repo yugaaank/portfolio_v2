@@ -19,11 +19,11 @@ export const PROJECTS = [
   },
   {
     n: "03",
-    name: "InterventionGPT",
-    tag: "GenAI • RAG • Engineering",
-    desc: "RAG system generating IRC-compliant road safety interventions using Llama 3.1.",
-    stack: "Python • Streamlit • ChromaDB • Llama 3",
-    link: "https://github.com/yugaaank/InterventionGPT",
+    name: "FreshR",
+    tag: "Database • Mobile App • React Native",
+    desc: "Supabase based react native application for universities/colleges student.",
+    stack: "Zustland • React Native • Supabase",
+    link: "https://github.com/yugaaank/freshR",
     img: "/interventionGPT.png",
   },
   {
