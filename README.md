@@ -1,76 +1,84 @@
-# Portfolio v2
+# Portfolio v2 — Digital Artisan
 
-A high-performance, visually immersive personal portfolio built with **React 19**, **Vite**, and **Three.js**. This project features advanced scroll-driven animations, smooth cinematic transitions, and a custom-engineered UI experience.
+A high-performance, visually immersive personal portfolio built with **React 19**, **Vite**, and **Three.js**. This project serves as a showcase of my engineering work, blending **AI/ML** focus with **advanced creative frontend** development.
 
 ![Portfolio Preview](/public/v0ra.png)
 
+## 🎨 The Philosophy
+
+This isn't just a website; it's a custom-engineered experience. Eschewing heavy animation libraries, this portfolio uses a **math-first approach** to motion, utilizing linear interpolation (LERP), cubic easing, and complex CSS clip-path wipes for a cinematic, fluid feel.
+
 ## 🚀 Technical Highlights
 
-- **Smooth Scrolling:** Integrated with **Lenis** for a refined, consistent scrolling experience across all browsers.
-- **3D Graphics:** Leveraging **@react-three/fiber** and **@react-three/drei** for performant WebGL/Three.js integrations.
-- **Scroll-Driven Transitions:** A custom layering system (`Layers.jsx`) that manages complex color-block transitions and parallax effects based on scroll progress.
-- **Interactive Cursor:** A custom-built cursor with spring-physics tracking for a tactile UI feel.
-- **Modern React:** Built on **React 19**, utilizing the latest hooks (`useCallback`, `useRef`, `useEffect`) and the React Compiler for optimized performance.
-- **Zero Framework CSS:** Stylized with pure **Vanilla CSS**, ensuring lightweight delivery and precise control over every pixel.
+- **Custom Scroll Orchestration:** A manual `tick` system in `App.jsx` calculates progress for every transition, driving layers, opacity, and 3D transforms with precision.
+- **3D Interactive Scenes:** Immersive WebGL elements powered by **@react-three/fiber** and **Three.js**.
+- **Lenis Smooth Scroll:** Integrated with heavy easing and JS-based "glide-snap" logic for a premium tactile feel.
+- **Layered UI Transitions:** A sophisticated layering system (`Layers.jsx`) that manages three independent color blocks (`l1`, `l2`, `l3`) that shift, resize, and slide as you scroll.
+- **Project Showcase:** A unique 3D card-stacking gallery with diagonal reveal animations driven by scroll-depth.
+- **Interactive Contact:** A "fractured" layout that splits the screen and reveals content through independent sliding panels.
 
 ## 🛠️ Tech Stack
 
-- **Core:** React 19, Vite
-- **Animation & Motion:** Lenis (Smooth Scroll), Custom Scroll Logic
-- **3D/WebGL:** Three.js, @react-three/fiber, @react-three/drei
-- **Styling:** CSS3 (Custom Properties, Flexbox, Grid, Clip-path animations)
-- **Deployment:** Optimized for Vercel/Netlify
+| Category | Technologies |
+| :--- | :--- |
+| **Frontend** | React 19 (Hooks, Context, Refs), Vite |
+| **Animation** | Lenis (Smooth Scroll), Custom Scroll Math (LERP/Easing) |
+| **3D / WebGL** | Three.js, @react-three/fiber, @react-three/drei |
+| **Styling** | Vanilla CSS (Grid, Flexbox, Clip-path, Perspective) |
+| **Content** | Structured project data and skills manifest |
+
+## 🌟 Featured Projects
+
+- **FFflow:** Terminal-based FFmpeg workflow automation (Rust/TUI).
+- **ClearView:** AI-driven data clarity and visualization (Python/Streamlit).
+- **FreshR:** Supabase-backed React Native application for university students.
+- **AlgoScan:** Cryptographic algorithm identification using ML (CatBoost/Flask).
+- **Portfolio v2:** This very site — a React 19 + Three.js creative experiment.
+
+## 🧠 Skill Set
+
+- **Languages:** JavaScript, TypeScript, Java, C, Rust (Learning), Python
+- **Frontend:** React, Next.js, Framer Motion, GSAP, CSS3
+- **Backend/DB:** Node.js, Express, MongoDB, MySQL, Supabase
+- **Specializations:** AI/ML (CatBoost, Scikit-learn), Linux, System Design
+
+## 🔧 Getting Started
+
+### Prerequisites
+
+- Node.js (Latest LTS)
+- npm or yarn
+
+### Installation & Run
+
+```bash
+# Clone the repository
+git clone https://github.com/yugaaank/portfolio_v2.git
+
+# Install dependencies
+npm install
+
+# Launch development server
+npm run dev
+
+# Build for production
+npm run build
+```
 
 ## 📁 Project Structure
 
 ```text
 src/
 ├── components/
-│   ├── Hero/          # 3D Scene and Hero content
-│   ├── About/         # Layered "About" sections
-│   ├── Projects/      # Project list and horizontal strips
-│   ├── Showcase/      # Stacking card gallery with diagonal wipes
-│   ├── Contact/       # Interactive "fracture" contact section
-│   └── Layout/        # Cursor, Nav, ProgressBar, and Global styles
+│   ├── Hero/          # Cinematic 3D entry point
+│   ├── Showcase/      # Stacking project cards with clip-path wipes
+│   ├── Contact/       # Interactive "fractured" UI layout
+│   ├── About/         # Skills and developer narrative
+│   └── Layout/        # Scroll-driven Layers, Nav, and Global state
 ├── utils/
-│   ├── data.js        # Project content and configuration
-│   └── utils.js       # Math helpers (lerp, easing, cl)
-└── App.jsx            # Core scroll orchestration and lifecycle
-```
-
-## 🌟 Key Sections
-
-- **Hero:** A cinematic entry point with 3D elements.
-- **The "Between":** A transitional space using layered parallax to shift between narratives.
-- **Project Showcase:** A unique stacking-card layout where projects are revealed through diagonal clip-path wipes.
-- **Interactive Contact:** A "fractured" UI layout that splits and reveals contact information as the user scrolls.
-
-## 🔧 Getting Started
-
-### Prerequisites
-
-- Node.js (Latest LTS recommended)
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yugaaank/portfolio_v2.git
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-### Building for Production
-
-```bash
-npm run build
+│   ├── data.js        # Source of truth for projects and metadata
+│   └── utils.js       # Math engines (lerp, easing, style apply)
+└── App.jsx            # The "Brain" - Scroll orchestration logic
 ```
 
 ## 📜 License
