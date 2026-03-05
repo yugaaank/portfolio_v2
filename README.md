@@ -1,18 +1,78 @@
-# React + Vite
+# Portfolio v2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance, visually immersive personal portfolio built with **React 19**, **Vite**, and **Three.js**. This project features advanced scroll-driven animations, smooth cinematic transitions, and a custom-engineered UI experience.
 
-Currently, two official plugins are available:
+![Portfolio Preview](/public/v0ra.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Technical Highlights
 
-## React Compiler
+- **Smooth Scrolling:** Integrated with **Lenis** for a refined, consistent scrolling experience across all browsers.
+- **3D Graphics:** Leveraging **@react-three/fiber** and **@react-three/drei** for performant WebGL/Three.js integrations.
+- **Scroll-Driven Transitions:** A custom layering system (`Layers.jsx`) that manages complex color-block transitions and parallax effects based on scroll progress.
+- **Interactive Cursor:** A custom-built cursor with spring-physics tracking for a tactile UI feel.
+- **Modern React:** Built on **React 19**, utilizing the latest hooks (`useCallback`, `useRef`, `useEffect`) and the React Compiler for optimized performance.
+- **Zero Framework CSS:** Stylized with pure **Vanilla CSS**, ensuring lightweight delivery and precise control over every pixel.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## 🛠️ Tech Stack
 
-Note: This will impact Vite dev & build performances.
+- **Core:** React 19, Vite
+- **Animation & Motion:** Lenis (Smooth Scroll), Custom Scroll Logic
+- **3D/WebGL:** Three.js, @react-three/fiber, @react-three/drei
+- **Styling:** CSS3 (Custom Properties, Flexbox, Grid, Clip-path animations)
+- **Deployment:** Optimized for Vercel/Netlify
 
-## Expanding the ESLint configuration
+## 📁 Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```text
+src/
+├── components/
+│   ├── Hero/          # 3D Scene and Hero content
+│   ├── About/         # Layered "About" sections
+│   ├── Projects/      # Project list and horizontal strips
+│   ├── Showcase/      # Stacking card gallery with diagonal wipes
+│   ├── Contact/       # Interactive "fracture" contact section
+│   └── Layout/        # Cursor, Nav, ProgressBar, and Global styles
+├── utils/
+│   ├── data.js        # Project content and configuration
+│   └── utils.js       # Math helpers (lerp, easing, cl)
+└── App.jsx            # Core scroll orchestration and lifecycle
+```
+
+## 🌟 Key Sections
+
+- **Hero:** A cinematic entry point with 3D elements.
+- **The "Between":** A transitional space using layered parallax to shift between narratives.
+- **Project Showcase:** A unique stacking-card layout where projects are revealed through diagonal clip-path wipes.
+- **Interactive Contact:** A "fractured" UI layout that splits and reveals contact information as the user scrolls.
+
+## 🔧 Getting Started
+
+### Prerequisites
+
+- Node.js (Latest LTS recommended)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yugaaank/portfolio_v2.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+### Building for Production
+
+```bash
+npm run build
+```
+
+## 📜 License
+
+MIT © [Yugank](https://github.com/yugaaank)
