@@ -2,7 +2,6 @@
 
 A high-performance, visually immersive personal portfolio built with **React 19**, **Vite**, and **Three.js**. This project serves as a showcase of my engineering work, blending **AI/ML** focus with **advanced creative frontend** development.
 
-![Portfolio Preview](/public/v0ra.png)
 
 ## 🎨 The Philosophy
 
