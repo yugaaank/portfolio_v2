@@ -1,0 +1,26 @@
+{
+  "totalFiles": 39,
+  "totalSymbols": 62,
+  "directories": {
+    "src": 15,
+    "src/lib": 1,
+    "src/utils": 5,
+    "src/components": 1,
+    "src/components/ThankYou": 1,
+    "src/components/ui": 11,
+    "src/components/Between": 1,
+    "src/components/Layout": 9,
+    "src/components/Hero": 7,
+    "src/components/Projects": 3,
+    "src/components/Contact": 5,
+    "src/components/About": 3
+  },
+  "topSymbols": [
+    "props",
+    "t",
+    "e",
+    "lenis",
+    "window"
+  ],
+  "languages": {}
+}

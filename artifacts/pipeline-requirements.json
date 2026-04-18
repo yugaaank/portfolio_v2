@@ -1,0 +1,154 @@
+{
+  "task": "make the complete site use cohesvie styling, analyze the styling what it looks like how it feels and then make the components or sections in the site which do not match the stling cohesive",
+  "po": {
+    "userStories": [
+      {
+        "id": "US-1",
+        "title": "Visual Cohesion",
+        "description": "As a visitor, I want a consistent visual experience across all sections so that the portfolio feels like a unified brand.",
+        "priority": "high"
+      },
+      {
+        "id": "US-2",
+        "title": "Aesthetic Alignment",
+        "description": "As a developer, I want to refactor mismatched components to align with the primary shader-driven and dithering aesthetic.",
+        "priority": "high"
+      },
+      {
+        "id": "US-3",
+        "title": "Layout Uniformity",
+        "description": "As a user, I want transitions and layout spacing to be uniform across the Hero, About, and Contact modules.",
+        "priority": "mid"
+      }
+    ],
+    "acceptanceCriteria": [
+      {
+        "storyId": "US-1",
+        "criteria": "About, Contact, and Projects sections updated to use the primary dithering/shader visual language"
+      },
+      {
+        "storyId": "US-2",
+        "criteria": "Global CSS variables for colors and typography strictly applied to all functional components"
+      },
+      {
+        "storyId": "US-3",
+        "criteria": "Layout padding and section transitions standardized across the entire scrollable viewport"
+      }
+    ],
+    "mvp": [
+      {
+        "feature": "Unified design tokens",
+        "reason": "Ensures color and typography consistency"
+      },
+      {
+        "feature": "Component style reconciliation",
+        "reason": "Aligns secondary sections with the Hero aesthetic"
+      }
+    ]
+  },
+  "ba": {
+    "edgeCases": [
+      {
+        "id": "EC-1",
+        "description": "Multiple active dithering shaders on large background surfaces cause significant frame rate drops or browser crashes on low-end mobile devices.",
+        "impact": "high"
+      },
+      {
+        "id": "EC-2",
+        "description": "Standardized layout padding on ultra-narrow viewports (under 320px) results in content clipping or unreadable text overlapping section boundaries.",
+        "impact": "mid"
+      },
+      {
+        "id": "EC-3",
+        "description": "Conflicting CSS transition logic between the smooth scrolling library and global layout variables causes jittery viewport positioning during section snaps.",
+        "impact": "mid"
+      }
+    ],
+    "testScenarios": [
+      {
+        "id": "TS-1",
+        "description": "Verify shader performance on low-spec hardware",
+        "given": "a device with integrated graphics",
+        "when": "scrolling through all shader-heavy sections rapidly",
+        "then": "the UI remains responsive with no visible stuttering or GPU-related browser hangs"
+      },
+      {
+        "id": "TS-2",
+        "description": "Validate visual accessibility with dithering effects",
+        "given": "dithering shaders applied to sections containing small-font text",
+        "when": "viewed on high-DPI versus low-DPI displays",
+        "then": "text contrast and legibility meet WCAG AA standards without distracting moir\u00e9 patterns"
+      },
+      {
+        "id": "TS-3",
+        "description": "Confirm layout stability during viewport resizing",
+        "given": "a browser window being resized from desktop to mobile",
+        "when": "the global CSS variables for padding and transitions are active",
+        "then": "sections re-align instantly without content overlapping or breaking the vertical scroll flow"
+      }
+    ]
+  },
+  "architect": {
+    "blastRadius": {
+      "mustChange": [
+        {
+          "path": "src/App.css",
+          "reason": "Centralize global CSS variables for colors and typography to ensure visual consistency across all components."
+        },
+        {
+          "path": "src/components/Layout/GlobalCSS.jsx",
+          "reason": "Standardize global layout padding and section transition variables as per Acceptance Criteria US-3."
+        },
+        {
+          "path": "src/components/About/AboutMain.jsx",
+          "reason": "Update component to implement the primary dithering shader aesthetic and align with the core visual language."
+        },
+        {
+          "path": "src/components/Projects/ProjectsList.jsx",
+          "reason": "Update component to implement the primary dithering shader aesthetic and align with the core visual language."
+        },
+        {
+          "path": "src/components/Contact/Contact.jsx",
+          "reason": "Update component to implement the primary dithering shader aesthetic and align with the core visual language."
+        },
+        {
+          "path": "src/components/Between/Between.jsx",
+          "reason": "Adjust layout spacing and transitions to match standardized global viewport boundaries."
+        }
+      ],
+      "mayAffect": [
+        {
+          "path": "src/App.jsx",
+          "reason": "Orchestrates sections and may require adjustments to handle standardized layout and transition logic."
+        },
+        {
+          "path": "src/components/ui/dithering-shader.tsx",
+          "reason": "May require performance optimizations or parameterization if multiple instances are activated across sections."
+        },
+        {
+          "path": "src/components/Hero/Hero.jsx",
+          "reason": "Existing hero section may require padding adjustments to maintain layout uniformity with updated sections."
+        },
+        {
+          "path": "src/components/SmoothScrolling.jsx",
+          "reason": "Smooth scroll behavior may need verification against new layout variables to prevent jitter during snaps."
+        },
+        {
+          "path": "src/components/Layout/Nav.jsx",
+          "reason": "Navigation component styling may require updates to match refined global color and typography variables."
+        }
+      ],
+      "contained": false,
+      "domain": "styling"
+    }
+  },
+  "devflow": [
+    {
+      "task": "Update src/App.jsx \u2014 may be affected by task",
+      "file": "src/App.jsx",
+      "symbol": "App",
+      "targetSymbols": [],
+      "type": "edit"
+    }
+  ]
+}

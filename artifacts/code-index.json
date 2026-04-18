@@ -1,0 +1,1428 @@
+[
+  {
+    "name": "Portfolio",
+    "filePath": "src/App.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 993,
+    "endByte": 11191,
+    "startLine": 19,
+    "endLine": 305,
+    "startColumn": 15,
+    "endColumn": 1,
+    "signature": "function Portfolio() {",
+    "calls": [
+      "src_app_jsx_requestanimationframe",
+      "src_app_jsx_cleartimeout",
+      "src_utils_utils_js_applylayer",
+      "src_app_jsx_tick",
+      "src_utils_utils_js_applypanel"
+    ],
+    "metrics": {
+      "cyclomaticComplexity": 48,
+      "maxNestingDepth": 7
+    }
+  },
+  {
+    "name": "sy",
+    "filePath": "src/App.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 1970,
+    "endByte": 8250,
+    "startLine": 57,
+    "endLine": 220,
+    "startColumn": 27,
+    "endColumn": 3,
+    "signature": "() => {",
+    "calls": [
+      "src_utils_utils_js_applylayer",
+      "src_utils_utils_js_applypanel"
+    ],
+    "metrics": {
+      "cyclomaticComplexity": 37,
+      "maxNestingDepth": 6
+    }
+  },
+  {
+    "name": "card",
+    "filePath": "src/App.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 6257,
+    "endByte": 7078,
+    "startLine": 169,
+    "endLine": 191,
+    "startColumn": 20,
+    "endColumn": 7,
+    "signature": "(card, i) => {",
+    "parameters": [
+      {
+        "name": "card",
+        "type": null
+      },
+      {
+        "name": "i",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 3,
+      "maxNestingDepth": 3
+    }
+  },
+  {
+    "name": "lenis",
+    "filePath": "src/App.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 8299,
+    "endByte": 9294,
+    "startLine": 224,
+    "endLine": 249,
+    "startColumn": 12,
+    "endColumn": 3,
+    "signature": "() => {",
+    "calls": [
+      "src_app_jsx_cleartimeout"
+    ],
+    "metrics": {
+      "cyclomaticComplexity": 8,
+      "maxNestingDepth": 6
+    }
+  },
+  {
+    "name": "clearTimeout",
+    "filePath": "src/App.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 8377,
+    "endByte": 9135,
+    "startLine": 227,
+    "endLine": 246,
+    "startColumn": 25,
+    "endColumn": 5,
+    "signature": "() => {",
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 6,
+      "maxNestingDepth": 5
+    }
+  },
+  {
+    "name": "sections",
+    "filePath": "src/App.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 8449,
+    "endByte": 9122,
+    "startLine": 229,
+    "endLine": 245,
+    "startColumn": 31,
+    "endColumn": 7,
+    "signature": "() => {",
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 6,
+      "maxNestingDepth": 4
+    }
+  },
+  {
+    "name": "r",
+    "filePath": "src/App.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 8557,
+    "endByte": 8571,
+    "startLine": 231,
+    "endLine": 231,
+    "startColumn": 15,
+    "endColumn": 29,
+    "signature": "r => r.current",
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 0
+    }
+  },
+  {
+    "name": "sec",
+    "filePath": "src/App.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 8703,
+    "endByte": 8844,
+    "startLine": 234,
+    "endLine": 237,
+    "startColumn": 25,
+    "endColumn": 9,
+    "signature": "sec => {",
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 3,
+      "maxNestingDepth": 3
+    }
+  },
+  {
+    "name": "t",
+    "filePath": "src/App.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 8991,
+    "endByte": 9064,
+    "startLine": 241,
+    "endLine": 241,
+    "startColumn": 20,
+    "endColumn": 93,
+    "signature": "(t) => t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2",
+    "parameters": [
+      {
+        "name": "t",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 2,
+      "maxNestingDepth": 0
+    }
+  },
+  {
+    "name": "window",
+    "filePath": "src/App.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 9201,
+    "endByte": 9289,
+    "startLine": 248,
+    "endLine": 248,
+    "startColumn": 11,
+    "endColumn": 99,
+    "signature": "() => { window.removeEventListener('scroll', handleScroll); clearTimeout(snapTimeout); }",
+    "calls": [
+      "src_app_jsx_cleartimeout"
+    ],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "tick",
+    "filePath": "src/App.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 9319,
+    "endByte": 9641,
+    "startLine": 251,
+    "endLine": 260,
+    "startColumn": 12,
+    "endColumn": 3,
+    "signature": "() => {",
+    "calls": [
+      "src_app_jsx_requestanimationframe"
+    ],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 2
+    }
+  },
+  {
+    "name": "requestAnimationFrame",
+    "filePath": "src/App.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 9360,
+    "endByte": 9393,
+    "startLine": 253,
+    "endLine": 253,
+    "startColumn": 21,
+    "endColumn": 54,
+    "signature": "() => requestAnimationFrame(tick)",
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 0
+    }
+  },
+  {
+    "name": "tx",
+    "filePath": "src/App.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 9665,
+    "endByte": 10482,
+    "startLine": 262,
+    "endLine": 285,
+    "startColumn": 12,
+    "endColumn": 3,
+    "signature": "() => {",
+    "calls": [
+      "src_app_jsx_requestanimationframe"
+    ],
+    "metrics": {
+      "cyclomaticComplexity": 5,
+      "maxNestingDepth": 4
+    }
+  },
+  {
+    "name": "e",
+    "filePath": "src/App.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 9786,
+    "endByte": 9959,
+    "startLine": 265,
+    "endLine": 270,
+    "startColumn": 17,
+    "endColumn": 5,
+    "signature": "(e) => {",
+    "parameters": [
+      {
+        "name": "e",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 3,
+      "maxNestingDepth": 3
+    }
+  },
+  {
+    "name": "dx",
+    "filePath": "src/App.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 9993,
+    "endByte": 10319,
+    "startLine": 272,
+    "endLine": 281,
+    "startColumn": 17,
+    "endColumn": 5,
+    "signature": "() => {",
+    "calls": [
+      "src_app_jsx_requestanimationframe"
+    ],
+    "metrics": {
+      "cyclomaticComplexity": 3,
+      "maxNestingDepth": 3
+    }
+  },
+  {
+    "name": "cn",
+    "filePath": "src/lib/utils.ts",
+    "type": "function",
+    "language": "typescript",
+    "startByte": 94,
+    "endByte": 165,
+    "startLine": 3,
+    "endLine": 5,
+    "startColumn": 7,
+    "endColumn": 1,
+    "signature": "function cn(...inputs: ClassValue[]) {",
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "v",
+    "filePath": "src/utils/utils.js",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 18,
+    "endByte": 52,
+    "startLine": 0,
+    "endLine": 0,
+    "startColumn": 18,
+    "endColumn": 52,
+    "signature": "(v) => Math.min(Math.max(v, 0), 1)",
+    "parameters": [
+      {
+        "name": "v",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 0
+    }
+  },
+  {
+    "name": "a",
+    "filePath": "src/utils/utils.js",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 74,
+    "endByte": 106,
+    "startLine": 1,
+    "endLine": 1,
+    "startColumn": 20,
+    "endColumn": 52,
+    "signature": "(a, b, t) => a + (b - a) * cl(t)",
+    "parameters": [
+      {
+        "name": "a",
+        "type": null
+      },
+      {
+        "name": "b",
+        "type": null
+      },
+      {
+        "name": "t",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 0
+    }
+  },
+  {
+    "name": "t",
+    "filePath": "src/utils/utils.js",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 136,
+    "endByte": 165,
+    "startLine": 2,
+    "endLine": 2,
+    "startColumn": 28,
+    "endColumn": 57,
+    "signature": "(t) => 1 - Math.pow(1 - t, 3)",
+    "parameters": [
+      {
+        "name": "t",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 0
+    }
+  },
+  {
+    "name": "applyLayer",
+    "filePath": "src/utils/utils.js",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 220,
+    "endByte": 392,
+    "startLine": 5,
+    "endLine": 9,
+    "startColumn": 7,
+    "endColumn": 1,
+    "signature": "function applyLayer(ref, leftVw, widthVw) {",
+    "parameters": [
+      {
+        "name": "ref",
+        "type": null
+      },
+      {
+        "name": "leftVw",
+        "type": null
+      },
+      {
+        "name": "widthVw",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 3,
+      "maxNestingDepth": 2
+    }
+  },
+  {
+    "name": "applyPanel",
+    "filePath": "src/utils/utils.js",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 401,
+    "endByte": 657,
+    "startLine": 11,
+    "endLine": 18,
+    "startColumn": 7,
+    "endColumn": 1,
+    "signature": "function applyPanel(ref, leftVw, widthVw, alpha, ty = 0) {",
+    "parameters": [
+      {
+        "name": "ref",
+        "type": null
+      },
+      {
+        "name": "leftVw",
+        "type": null
+      },
+      {
+        "name": "widthVw",
+        "type": null
+      },
+      {
+        "name": "alpha",
+        "type": null
+      },
+      {
+        "name": "ty",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 4,
+      "maxNestingDepth": 2
+    }
+  },
+  {
+    "name": "SmoothScrolling",
+    "filePath": "src/components/SmoothScrolling.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 43,
+    "endByte": 233,
+    "startLine": 3,
+    "endLine": 9,
+    "startColumn": 0,
+    "endColumn": 1,
+    "signature": "function SmoothScrolling({ children }) {",
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "props",
+    "filePath": "src/components/ThankYou/ThankYou.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 65,
+    "endByte": 843,
+    "startLine": 2,
+    "endLine": 25,
+    "startColumn": 28,
+    "endColumn": 1,
+    "signature": "(props, ref) => {",
+    "parameters": [
+      {
+        "name": "props",
+        "type": null
+      },
+      {
+        "name": "ref",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "hexToRgba",
+    "filePath": "src/components/ui/dithering-shader.tsx",
+    "type": "function",
+    "language": "typescript",
+    "startByte": 6614,
+    "endByte": 7263,
+    "startLine": 272,
+    "endLine": 294,
+    "startColumn": 0,
+    "endColumn": 1,
+    "signature": "function hexToRgba(hex: string): [number, number, number, number] {",
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 7,
+      "maxNestingDepth": 3
+    }
+  },
+  {
+    "name": "createShader",
+    "filePath": "src/components/ui/dithering-shader.tsx",
+    "type": "function",
+    "language": "typescript",
+    "startByte": 7265,
+    "endByte": 7714,
+    "startLine": 296,
+    "endLine": 310,
+    "startColumn": 0,
+    "endColumn": 1,
+    "signature": "function createShader(gl: WebGL2RenderingContext, type: number, source: string): WebGLShader | null {",
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 5,
+      "maxNestingDepth": 3
+    }
+  },
+  {
+    "name": "createProgram",
+    "filePath": "src/components/ui/dithering-shader.tsx",
+    "type": "function",
+    "language": "typescript",
+    "startByte": 7716,
+    "endByte": 8472,
+    "startLine": 312,
+    "endLine": 336,
+    "startColumn": 0,
+    "endColumn": 1,
+    "signature": "function createProgram(",
+    "calls": [
+      "src_components_ui_dithering_shader_tsx_createshader"
+    ],
+    "metrics": {
+      "cyclomaticComplexity": 7,
+      "maxNestingDepth": 3
+    }
+  },
+  {
+    "name": "DitheringShader",
+    "filePath": "src/components/ui/dithering-shader.tsx",
+    "type": "function",
+    "language": "typescript",
+    "startByte": 8481,
+    "endByte": 12964,
+    "startLine": 338,
+    "endLine": 479,
+    "startColumn": 7,
+    "endColumn": 1,
+    "signature": "function DitheringShader({",
+    "calls": [
+      "src_app_jsx_requestanimationframe",
+      "src_components_ui_dithering_shader_tsx_createprogram",
+      "src_components_ui_dithering_shader_tsx_hextorgba"
+    ],
+    "metrics": {
+      "cyclomaticComplexity": 33,
+      "maxNestingDepth": 5
+    }
+  },
+  {
+    "name": "canvas",
+    "filePath": "src/components/ui/dithering-shader.tsx",
+    "type": "function",
+    "language": "typescript",
+    "startByte": 9069,
+    "endByte": 12537,
+    "startLine": 357,
+    "endLine": 456,
+    "startColumn": 12,
+    "endColumn": 3,
+    "signature": "() => {",
+    "calls": [
+      "src_app_jsx_requestanimationframe",
+      "src_components_ui_dithering_shader_tsx_createprogram",
+      "src_components_ui_dithering_shader_tsx_hextorgba"
+    ],
+    "metrics": {
+      "cyclomaticComplexity": 33,
+      "maxNestingDepth": 4
+    }
+  },
+  {
+    "name": "displayWidth",
+    "filePath": "src/components/ui/dithering-shader.tsx",
+    "type": "function",
+    "language": "typescript",
+    "startByte": 10489,
+    "endByte": 10812,
+    "startLine": 395,
+    "endLine": 404,
+    "startColumn": 19,
+    "endColumn": 5,
+    "signature": "() => {",
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 3,
+      "maxNestingDepth": 3
+    }
+  },
+  {
+    "name": "currentTime",
+    "filePath": "src/components/ui/dithering-shader.tsx",
+    "type": "function",
+    "language": "typescript",
+    "startByte": 10945,
+    "endByte": 12109,
+    "startLine": 410,
+    "endLine": 437,
+    "startColumn": 19,
+    "endColumn": 5,
+    "signature": "() => {",
+    "calls": [
+      "src_app_jsx_requestanimationframe",
+      "src_components_ui_dithering_shader_tsx_hextorgba"
+    ],
+    "metrics": {
+      "cyclomaticComplexity": 19,
+      "maxNestingDepth": 3
+    }
+  },
+  {
+    "name": "speed",
+    "filePath": "src/components/ui/dithering-shader.tsx",
+    "type": "function",
+    "language": "typescript",
+    "startByte": 12138,
+    "endByte": 12245,
+    "startLine": 439,
+    "endLine": 443,
+    "startColumn": 27,
+    "endColumn": 5,
+    "signature": "() => {",
+    "calls": [
+      "src_app_jsx_requestanimationframe"
+    ],
+    "metrics": {
+      "cyclomaticComplexity": 3,
+      "maxNestingDepth": 3
+    }
+  },
+  {
+    "name": "resizeObserver",
+    "filePath": "src/components/ui/dithering-shader.tsx",
+    "type": "function",
+    "language": "typescript",
+    "startByte": 12280,
+    "endByte": 12533,
+    "startLine": 447,
+    "endLine": 455,
+    "startColumn": 11,
+    "endColumn": 5,
+    "signature": "() => {",
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 5,
+      "maxNestingDepth": 3
+    }
+  },
+  {
+    "name": "count",
+    "filePath": "src/components/ui/sphere.tsx",
+    "type": "function",
+    "language": "typescript",
+    "startByte": 94,
+    "endByte": 566,
+    "startLine": 3,
+    "endLine": 16,
+    "startColumn": 25,
+    "endColumn": 1,
+    "signature": "() => {",
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "prev",
+    "filePath": "src/components/ui/sphere.tsx",
+    "type": "function",
+    "language": "typescript",
+    "startByte": 432,
+    "endByte": 450,
+    "startLine": 11,
+    "endLine": 11,
+    "startColumn": 40,
+    "endColumn": 58,
+    "signature": "(prev) => prev - 1",
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 0
+    }
+  },
+  {
+    "name": "props",
+    "filePath": "src/components/Between/Between.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 64,
+    "endByte": 640,
+    "startLine": 2,
+    "endLine": 24,
+    "startColumn": 27,
+    "endColumn": 1,
+    "signature": "(props, ref) => {",
+    "parameters": [
+      {
+        "name": "props",
+        "type": null
+      },
+      {
+        "name": "ref",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "props",
+    "filePath": "src/components/Layout/Cursor.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 63,
+    "endByte": 240,
+    "startLine": 2,
+    "endLine": 10,
+    "startColumn": 26,
+    "endColumn": 1,
+    "signature": "(props, ref) => {",
+    "parameters": [
+      {
+        "name": "props",
+        "type": null
+      },
+      {
+        "name": "ref",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "style",
+    "filePath": "src/components/Layout/GlobalCSS.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 14075,
+    "endByte": 14115,
+    "startLine": 396,
+    "endLine": 398,
+    "startColumn": 18,
+    "endColumn": 1,
+    "signature": "() => {",
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "props",
+    "filePath": "src/components/Layout/ScrollSpacers.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 70,
+    "endByte": 557,
+    "startLine": 2,
+    "endLine": 14,
+    "startColumn": 33,
+    "endColumn": 1,
+    "signature": "(props, ref) => {",
+    "parameters": [
+      {
+        "name": "props",
+        "type": null
+      },
+      {
+        "name": "ref",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "nav",
+    "filePath": "src/components/Layout/Nav.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 40,
+    "endByte": 1209,
+    "startLine": 2,
+    "endLine": 21,
+    "startColumn": 12,
+    "endColumn": 1,
+    "signature": "({ lenis, heroRef, projRef, aboutRef, contactRef }) => {",
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 7,
+      "maxNestingDepth": 3
+    }
+  },
+  {
+    "name": "lenis",
+    "filePath": "src/components/Layout/Nav.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 189,
+    "endByte": 332,
+    "startLine": 5,
+    "endLine": 5,
+    "startColumn": 71,
+    "endColumn": 214,
+    "signature": "() => lenis?.scrollTo(heroRef.current || 0, { duration: 2, easing: (t) => t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2 })",
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 2,
+      "maxNestingDepth": 0
+    }
+  },
+  {
+    "name": "t",
+    "filePath": "src/components/Layout/Nav.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 256,
+    "endByte": 329,
+    "startLine": 5,
+    "endLine": 5,
+    "startColumn": 138,
+    "endColumn": 211,
+    "signature": "(t) => t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2",
+    "parameters": [
+      {
+        "name": "t",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 2,
+      "maxNestingDepth": 0
+    }
+  },
+  {
+    "name": "e",
+    "filePath": "src/components/Layout/Nav.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 445,
+    "endByte": 610,
+    "startLine": 10,
+    "endLine": 10,
+    "startColumn": 36,
+    "endColumn": 201,
+    "signature": "(e) => { e.preventDefault(); lenis?.scrollTo(aboutRef.current, { duration: 2, easing: (t) => t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2 }); }",
+    "parameters": [
+      {
+        "name": "e",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 2,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "div",
+    "filePath": "src/components/Layout/ProgressBar.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 48,
+    "endByte": 146,
+    "startLine": 2,
+    "endLine": 6,
+    "startColumn": 20,
+    "endColumn": 1,
+    "signature": "({ prog }) => {",
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "props",
+    "filePath": "src/components/Layout/Layers.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 63,
+    "endByte": 500,
+    "startLine": 2,
+    "endLine": 23,
+    "startColumn": 26,
+    "endColumn": 1,
+    "signature": "(props, ref) => {",
+    "parameters": [
+      {
+        "name": "props",
+        "type": null
+      },
+      {
+        "name": "ref",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "props",
+    "filePath": "src/components/Hero/Hero.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 90,
+    "endByte": 898,
+    "startLine": 3,
+    "endLine": 30,
+    "startColumn": 24,
+    "endColumn": 1,
+    "signature": "(props, ref) => {",
+    "parameters": [
+      {
+        "name": "props",
+        "type": null
+      },
+      {
+        "name": "ref",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "Scene",
+    "filePath": "src/components/Hero/Scene.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 139,
+    "endByte": 1989,
+    "startLine": 3,
+    "endLine": 59,
+    "startColumn": 15,
+    "endColumn": 1,
+    "signature": "function Scene() {",
+    "calls": [
+      "src_app_jsx_requestanimationframe",
+      "src_components_hero_scene_jsx_setmousepos"
+    ],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 3
+    }
+  },
+  {
+    "name": "handleMouseMove",
+    "filePath": "src/components/Hero/Scene.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 316,
+    "endByte": 1202,
+    "startLine": 8,
+    "endLine": 32,
+    "startColumn": 14,
+    "endColumn": 5,
+    "signature": "() => {",
+    "calls": [
+      "src_components_hero_scene_jsx_setmousepos",
+      "src_app_jsx_requestanimationframe"
+    ],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 2
+    }
+  },
+  {
+    "name": "e",
+    "filePath": "src/components/Hero/Scene.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 356,
+    "endByte": 616,
+    "startLine": 9,
+    "endLine": 15,
+    "startColumn": 32,
+    "endColumn": 9,
+    "signature": "(e) => {",
+    "parameters": [
+      {
+        "name": "e",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "setMousePos",
+    "filePath": "src/components/Hero/Scene.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 642,
+    "endByte": 917,
+    "startLine": 17,
+    "endLine": 23,
+    "startColumn": 24,
+    "endColumn": 9,
+    "signature": "() => {",
+    "calls": [
+      "src_app_jsx_requestanimationframe"
+    ],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "prev",
+    "filePath": "src/components/Hero/Scene.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 674,
+    "endByte": 842,
+    "startLine": 18,
+    "endLine": 21,
+    "startColumn": 24,
+    "endColumn": 14,
+    "signature": "prev => ({",
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 0
+    }
+  },
+  {
+    "name": "window",
+    "filePath": "src/components/Hero/Scene.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 1057,
+    "endByte": 1196,
+    "startLine": 28,
+    "endLine": 31,
+    "startColumn": 15,
+    "endColumn": 9,
+    "signature": "() => {",
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "props",
+    "filePath": "src/components/Projects/ProjectsStrip.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 70,
+    "endByte": 1200,
+    "startLine": 2,
+    "endLine": 41,
+    "startColumn": 33,
+    "endColumn": 1,
+    "signature": "(props, ref) => {",
+    "parameters": [
+      {
+        "name": "props",
+        "type": null
+      },
+      {
+        "name": "ref",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "props",
+    "filePath": "src/components/Projects/ProjectsList.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 114,
+    "endByte": 1430,
+    "startLine": 3,
+    "endLine": 48,
+    "startColumn": 32,
+    "endColumn": 1,
+    "signature": "(props, ref) => {",
+    "parameters": [
+      {
+        "name": "props",
+        "type": null
+      },
+      {
+        "name": "ref",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "p",
+    "filePath": "src/components/Projects/ProjectsList.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 459,
+    "endByte": 1397,
+    "startLine": 18,
+    "endLine": 44,
+    "startColumn": 22,
+    "endColumn": 9,
+    "signature": "(p, i) => (",
+    "parameters": [
+      {
+        "name": "p",
+        "type": null
+      },
+      {
+        "name": "i",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 0
+    }
+  },
+  {
+    "name": "props",
+    "filePath": "src/components/Contact/ContactFracture.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 72,
+    "endByte": 280,
+    "startLine": 2,
+    "endLine": 10,
+    "startColumn": 35,
+    "endColumn": 1,
+    "signature": "(props, ref) => {",
+    "parameters": [
+      {
+        "name": "props",
+        "type": null
+      },
+      {
+        "name": "ref",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "props",
+    "filePath": "src/components/Contact/ContactLightContent.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 76,
+    "endByte": 716,
+    "startLine": 2,
+    "endLine": 19,
+    "startColumn": 39,
+    "endColumn": 1,
+    "signature": "(props, ref) => {",
+    "parameters": [
+      {
+        "name": "props",
+        "type": null
+      },
+      {
+        "name": "ref",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "props",
+    "filePath": "src/components/Contact/ContactSeam.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 68,
+    "endByte": 584,
+    "startLine": 2,
+    "endLine": 22,
+    "startColumn": 31,
+    "endColumn": 1,
+    "signature": "(props, ref) => {",
+    "parameters": [
+      {
+        "name": "props",
+        "type": null
+      },
+      {
+        "name": "ref",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "props",
+    "filePath": "src/components/Contact/ContactDarkContent.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 75,
+    "endByte": 695,
+    "startLine": 2,
+    "endLine": 21,
+    "startColumn": 38,
+    "endColumn": 1,
+    "signature": "(props, ref) => {",
+    "parameters": [
+      {
+        "name": "props",
+        "type": null
+      },
+      {
+        "name": "ref",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "props",
+    "filePath": "src/components/Contact/Contact.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 273,
+    "endByte": 583,
+    "startLine": 6,
+    "endLine": 16,
+    "startColumn": 27,
+    "endColumn": 1,
+    "signature": "(props, ref) => {",
+    "parameters": [
+      {
+        "name": "props",
+        "type": null
+      },
+      {
+        "name": "ref",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "props",
+    "filePath": "src/components/About/AboutStrip.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 67,
+    "endByte": 395,
+    "startLine": 2,
+    "endLine": 14,
+    "startColumn": 30,
+    "endColumn": 1,
+    "signature": "(props, ref) => {",
+    "parameters": [
+      {
+        "name": "props",
+        "type": null
+      },
+      {
+        "name": "ref",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "props",
+    "filePath": "src/components/About/AboutMain.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 246,
+    "endByte": 1068,
+    "startLine": 9,
+    "endLine": 33,
+    "startColumn": 29,
+    "endColumn": 1,
+    "signature": "(props, ref) => {",
+    "parameters": [
+      {
+        "name": "props",
+        "type": null
+      },
+      {
+        "name": "ref",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 1
+    }
+  },
+  {
+    "name": "s",
+    "filePath": "src/components/About/AboutMain.jsx",
+    "type": "function",
+    "language": "javascript",
+    "startByte": 940,
+    "endByte": 1035,
+    "startLine": 25,
+    "endLine": 29,
+    "startColumn": 20,
+    "endColumn": 9,
+    "signature": "(s) => (",
+    "parameters": [
+      {
+        "name": "s",
+        "type": null
+      }
+    ],
+    "calls": [],
+    "metrics": {
+      "cyclomaticComplexity": 1,
+      "maxNestingDepth": 0
+    }
+  }
+]

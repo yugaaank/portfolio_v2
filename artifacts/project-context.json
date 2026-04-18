@@ -1,0 +1,81 @@
+{
+  "stack": {
+    "language": "typescript",
+    "framework": "",
+    "packageManager": "npm",
+    "buildTool": "vite",
+    "extensions": [
+      ".js",
+      ".jsx",
+      ".ts",
+      ".tsx"
+    ],
+    "detectedFiles": []
+  },
+  "projectSize": "small",
+  "fileCount": 51,
+  "project": {
+    "name": "",
+    "description": "",
+    "type": ""
+  },
+  "structure": {
+    "fileTree": "# All Files\n\n- [[file_readme_md]] (markdown)\n- [[file_eslint_config_js]] (javascript)\n- [[file_index_html]] (html)\n- [[file_package_lock_json]] (json)\n- [[file_package_json]] (json)\n- [[file_postcss_config_js]] (javascript)\n- [[file_src_app_css]] (css)\n- [[file_src_app_jsx]] (javascript)\n- [[file_src_components_about_aboutmain_jsx]] (javascript)\n- [[file_src_components_about_aboutstrip_jsx]] (javascript)\n- [[file_src_components_between_between_jsx]] (javascript)\n- [[file_src_components_contact_contact_jsx]] (javascript)\n- [[file_src_components_contact_contactdarkcontent_jsx]] (javascript)\n- [[file_src_components_contact_contactfracture_jsx]] (javascript)\n- [[file_src_components_contact_contactlightcontent_jsx]] (javascript)\n- [[file_src_components_contact_contactseam_jsx]] (javascript)\n- [[file_src_components_hero_hero_jsx]] (javascript)\n- [[file_src_components_hero_scene_jsx]] (javascript)\n- [[file_src_components_layout_cursor_jsx]] (javascript)\n- [[file_src_components_layout_globalcss_jsx]] (javascript)\n- [[file_src_components_layout_layers_jsx]] (javascript)\n- [[file_src_components_layout_nav_jsx]] (javascript)\n- [[file_src_components_layout_progressbar_jsx]] (javascript)\n- [[file_src_components_layout_scrollspacers_jsx]] (javascript)\n- [[file_src_components_projects_projectslist_jsx]] (javascript)\n- [[file_src_components_projects_projectsstrip_jsx]] (javascript)\n- [[file_src_components_smoothscrolling_jsx]] (javascript)\n- [[file_src_components_thankyou_thankyou_jsx]] (javascript)\n- [[file_src_components_ui_dithering_shader_tsx]] (typescript)\n- [[file_src_components_ui_sphere_tsx]] (typescript)\n- [[file_src_index_css]] (css)\n- [[file_src_lib_utils_ts]] (typescript)\n- [[file_src_main_jsx]] (javascript)\n- [[file_src_utils_data_js]] (javascript)\n- [[file_src_utils_utils_js]] (javascript)\n- [[file_tailwind_config_js]] (javascript)\n- [[file_tsconfig_json]] (json)\n- [[file_tsconfig_node_json]] (json)\n- [[file_vite_config_js]] (javascript)",
+    "domains": [
+      {
+        "name": "root",
+        "files": [
+          "file_readme_md",
+          "file_eslint_config_js",
+          "file_index_html",
+          "file_package_lock_json",
+          "file_package_json",
+          "file_postcss_config_js",
+          "file_tailwind_config_js",
+          "file_tsconfig_json",
+          "file_tsconfig_node_json",
+          "file_vite_config_js"
+        ],
+        "description": "Files in root domain"
+      },
+      {
+        "name": "src",
+        "files": [
+          "file_src_app_css",
+          "file_src_app_jsx",
+          "file_src_components_about_aboutmain_jsx",
+          "file_src_components_about_aboutstrip_jsx",
+          "file_src_components_between_between_jsx",
+          "file_src_components_contact_contact_jsx",
+          "file_src_components_contact_contactdarkcontent_jsx",
+          "file_src_components_contact_contactfracture_jsx",
+          "file_src_components_contact_contactlightcontent_jsx",
+          "file_src_components_contact_contactseam_jsx",
+          "file_src_components_hero_hero_jsx",
+          "file_src_components_hero_scene_jsx",
+          "file_src_components_layout_cursor_jsx",
+          "file_src_components_layout_globalcss_jsx",
+          "file_src_components_layout_layers_jsx",
+          "file_src_components_layout_nav_jsx",
+          "file_src_components_layout_progressbar_jsx",
+          "file_src_components_layout_scrollspacers_jsx",
+          "file_src_components_projects_projectslist_jsx",
+          "file_src_components_projects_projectsstrip_jsx",
+          "file_src_components_smoothscrolling_jsx",
+          "file_src_components_thankyou_thankyou_jsx",
+          "file_src_components_ui_dithering_shader_tsx",
+          "file_src_components_ui_sphere_tsx",
+          "file_src_index_css",
+          "file_src_lib_utils_ts",
+          "file_src_main_jsx",
+          "file_src_utils_data_js",
+          "file_src_utils_utils_js"
+        ],
+        "description": "Files in src domain"
+      }
+    ]
+  },
+  "meta": {
+    "createdAt": "2026-04-18T06:53:07.225729+00:00"
+  }
+}
