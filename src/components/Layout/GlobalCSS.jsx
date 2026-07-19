@@ -391,6 +391,8 @@ nav {
   .hero-hint, .cur-ring, .avail-dot, .between-bg-text { animation: none !important; }
   body { cursor: auto; }
   .cur, .cur-ring { display: none; }
+  /* Never let the mobile reveal hide content if JS is slow/disabled. */
+  [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
 
 /* ── TOUCH / COARSE POINTER ── */
