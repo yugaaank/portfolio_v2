@@ -78,6 +78,7 @@ uniform vec4 u_colorFront;
 uniform float u_shape;
 uniform float u_type;
 uniform float u_pxSize;
+uniform float u_scroll;
 
 out vec4 fragColor;
 
@@ -200,6 +201,12 @@ void main() {
     shape *= step(0., d);
   }
 
+  // Scroll-reactive: tighten the shape pattern as the page descends the
+  // press run. Dithering grid (dithering_uv) is left untouched so the
+  // pixel matrix stays stable while the underlying pattern breathes.
+  float scrollScale = mix(0.55, 2.4, clamp(u_scroll, 0.0, 1.0));
+  shape_uv *= scrollScale;
+
   int type = int(floor(u_type));
   float dithering = 0.0;
 
@@ -270,6 +277,7 @@ interface DitheringShaderProps {
   type?: DitheringType
   pxSize?: number
   speed?: number
+  scrollProgress?: number
   className?: string
   style?: React.CSSProperties
 }
@@ -349,6 +357,7 @@ export function DitheringShader({
   type = "8x8",
   pxSize = 4,
   speed = 1,
+  scrollProgress,
   className = "",
   style = {},
 }: DitheringShaderProps) {
@@ -358,6 +367,28 @@ export function DitheringShader({
   const glRef = useRef<WebGL2RenderingContext | null>(null)
   const uniformLocationsRef = useRef<Record<string, WebGLUniformLocation | null>>({})
   const startTimeRef = useRef<number>(Date.now())
+  const scrollRef = useRef<number>(
+    typeof window !== "undefined" && scrollProgress === undefined
+      ? window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight)
+      : scrollProgress ?? 0,
+  )
+
+  const prefersReducedMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
+  // Auto-track global scroll progress unless an explicit value is passed.
+  useEffect(() => {
+    if (scrollProgress !== undefined || prefersReducedMotion) return
+    const onScroll = () => {
+      const max = document.body.scrollHeight - window.innerHeight
+      scrollRef.current = max > 0 ? window.scrollY / max : 0
+    }
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [scrollProgress, prefersReducedMotion])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -386,6 +417,7 @@ export function DitheringShader({
       u_shape: gl.getUniformLocation(program, "u_shape"),
       u_type: gl.getUniformLocation(program, "u_type"),
       u_pxSize: gl.getUniformLocation(program, "u_pxSize"),
+      u_scroll: gl.getUniformLocation(program, "u_scroll"),
     }
 
     // Set up position attribute
@@ -433,6 +465,7 @@ export function DitheringShader({
       if (locations.u_shape) context.uniform1f(locations.u_shape, DitheringShapes[shape])
       if (locations.u_type) context.uniform1f(locations.u_type, DitheringTypes[type])
       if (locations.u_pxSize) context.uniform1f(locations.u_pxSize, pxSize)
+      if (locations.u_scroll) context.uniform1f(locations.u_scroll, scrollRef.current)
 
       context.drawArrays(context.TRIANGLES, 0, 6)
 
@@ -458,7 +491,7 @@ export function DitheringShader({
         glRef.current.deleteProgram(programRef.current)
       }
     }
-  }, [colorBack, colorFront, shape, type, pxSize, speed])
+  }, [colorBack, colorFront, shape, type, pxSize, speed, scrollProgress])
 
   return (
     <div
