@@ -165,3 +165,25 @@
   }
   .proof-plate { height: 38vh; }
 }
+
+@media (max-width: 768px) {
+  .proof-strip { flex-direction: column; }
+  .proof-sprockets {
+    width: 100%;
+    height: 10px;
+    background-image: repeating-linear-gradient(
+      to right,
+      #0c0c0c 0, #0c0c0c 10px,
+      transparent 10px, transparent 26px
+    );
+    opacity: 0.25;
+  }
+  .proof-frame {
+    border-left: none;
+    padding-left: 0;
+    gap: 1rem;
+  }
+  .proof-plate { height: 30vh; }
+  .proof-name { font-size: clamp(2.5rem, 12vw, 4rem); }
+  .proof-foot { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+}

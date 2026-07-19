@@ -392,6 +392,53 @@ nav {
   body { cursor: auto; }
   .cur, .cur-ring { display: none; }
 }
+
+/* ── TOUCH / COARSE POINTER ── */
+@media (pointer: coarse) {
+  body { cursor: auto; }
+  .cur, .cur-ring { display: none; }
+}
+
+/* ── MOBILE LAYOUT ── */
+@media (max-width: 768px) {
+  :root {
+    --padding-x: 1.4rem;
+    --padding-y: 2.5rem;
+  }
+
+  /* Trim scroll distance so sections aren't over-scrolled on small screens. */
+  .s-hero    { height: 170vh; }
+  .s-about   { height: 170vh; }
+  .s-between { height: 130vh; }
+  .s-proj    { height: 200vh; }
+  .s-contact { height: 150vh; }
+  .s-thankyou { height: 200vh; }
+
+  /* Stack hero text above the shader visual. */
+  .hero-container { flex-direction: column; gap: 2.5rem; text-align: left; }
+  .hero-visual-block { width: 100%; }
+  .hero-title { font-size: clamp(3.5rem, 18vw, 9rem); }
+
+  /* About strip becomes a slim top bar, not a 20vw sliver. */
+  .p-about-l1 {
+    width: 100vw !important;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem var(--padding-x);
+    border-right: none;
+    border-bottom: 1px solid rgba(240,233,214,.12);
+  }
+  .p-about-l1 .strip-num,
+  .p-about-l1 .strip-role { display: none; }
+  .p-about-l1 .strip-label { margin-bottom: 0; }
+
+  /* Main about panel sits full width under the strip. */
+  .p-about-l2 { width: 100vw !important; padding: 6rem var(--padding-x) 3rem; }
+
+  /* Projects strip full width. */
+  .p-proj-l2 { width: 100vw !important; }
+}
 `;
 
 const GlobalCSS = () => {
