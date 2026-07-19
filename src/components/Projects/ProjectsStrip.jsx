@@ -17,9 +17,7 @@ const ProjectsStrip = forwardRef((props, ref) => {
       aria-label="Selected work"
     >
       <div>
-        <p className="strip-label" style={{ color: "#0c0c0c" }}>
-          03 / Selected Work
-        </p>
+        <p className="m-index">03 — Selected Work</p>
         <div className="contact-num">03</div>
       </div>
       <div>
@@ -40,6 +38,7 @@ const ProjectsStrip = forwardRef((props, ref) => {
           </a>
         </div>
       </div>
+      <hr className="m-divider" aria-hidden="true"><span>03</span></hr>
     </div>
   );
 });

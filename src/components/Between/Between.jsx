@@ -37,13 +37,14 @@ const Between = forwardRef((props, ref) => {
       <div className="between-bg-text">
         DESIGN&nbsp;&nbsp;DEVELOP&nbsp;&nbsp;SHIP&nbsp;&nbsp;REPEAT
       </div>
-      <div className="between-idx" style={{ color: 'var(--text-dark)' }}>02 / Process</div>
+      <p className="m-index">02 — Process</p>
       <div className="between-passes" style={{ color: 'var(--text-dark)' }}>
         <span className="pass"><i>01</i> Design</span>
         <span className="pass"><i>02</i> Develop</span>
         <span className="pass"><i>03</i> Ship</span>
       </div>
       <div className="between-sub" style={{ color: 'var(--text-dark)' }}>Web • AI/ML • Systems</div>
+      <hr className="m-divider" aria-hidden="true"><span>02</span></hr>
     </div>
   );
 });

@@ -34,6 +34,7 @@ const ProjectsList = forwardRef((props, ref) => {
           speed={0.2}
         />
       </div>
+      <p className="m-index">03 — Selected Work</p>
       <h2 className="proj-h2">Selected Work — Proof Sheets</h2>
       <div className="proof-strip">
         <div className="proof-sprockets" aria-hidden="true" />
@@ -71,6 +72,7 @@ const ProjectsList = forwardRef((props, ref) => {
           ))}
         </div>
       </div>
+      <hr className="m-divider" aria-hidden="true"><span>03</span></hr>
     </div>
   );
 });

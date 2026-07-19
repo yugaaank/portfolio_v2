@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 const ContactDarkContent = forwardRef((props, ref) => {
   return (
     <div className="cfrac-dark-content" ref={ref} id="contact" role="region" aria-label="Contact" data-reveal>
-      <p className="cfrac-eyebrow">04 / Contact — Let's collaborate</p>
+      <p className="m-index">04 — Contact</p>
       <h2 className="cfrac-big">
         Got a project
         <br />
@@ -17,6 +17,7 @@ const ContactDarkContent = forwardRef((props, ref) => {
         <span className="avail-dot" />
         Currently available for internships & collaborations
       </div>
+      <hr className="m-divider" aria-hidden="true"><span>04</span></hr>
     </div>
   );
 });

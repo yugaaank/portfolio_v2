@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 const ThankYou = forwardRef((props, ref) => {
   return (
     <div className="ty-stage" ref={ref} role="contentinfo" aria-label="Closing" data-reveal>
-      <div className="ty-counter">05 / End</div>
+      <p className="m-index">05 — End</p>
       <h2 className="ty-headline">
         THANK
         <br />

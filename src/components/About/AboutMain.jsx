@@ -32,6 +32,7 @@ const AboutMain = forwardRef((props, ref) => {
           speed={0.4}
         />
       </div>
+      <p className="m-index">01 — About</p>
       <h2 className="about-h2">
         Designer & Developer —
         <br />
@@ -54,6 +55,7 @@ const AboutMain = forwardRef((props, ref) => {
           ))}
         </div>
       </div>
+      <hr className="m-divider" aria-hidden="true"><span>01</span></hr>
     </div>
   );
 });
