@@ -72,7 +72,7 @@ const ProjectsList = forwardRef((props, ref) => {
           ))}
         </div>
       </div>
-      <hr className="m-divider" aria-hidden="true"><span>03</span></hr>
+      <div className="m-divider" aria-hidden="true"><span>03</span></div>
     </div>
   );
 });

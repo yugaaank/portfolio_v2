@@ -44,7 +44,7 @@ const Between = forwardRef((props, ref) => {
         <span className="pass"><i>03</i> Ship</span>
       </div>
       <div className="between-sub" style={{ color: 'var(--text-dark)' }}>Web • AI/ML • Systems</div>
-      <hr className="m-divider" aria-hidden="true"><span>02</span></hr>
+      <div className="m-divider" aria-hidden="true"><span>02</span></div>
     </div>
   );
 });

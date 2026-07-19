@@ -17,7 +17,7 @@ const ContactDarkContent = forwardRef((props, ref) => {
         <span className="avail-dot" />
         Currently available for internships & collaborations
       </div>
-      <hr className="m-divider" aria-hidden="true"><span>04</span></hr>
+      <div className="m-divider" aria-hidden="true"><span>04</span></div>
     </div>
   );
 });

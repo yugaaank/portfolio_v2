@@ -37,7 +37,7 @@ const Hero = forwardRef((props, ref) => {
           </div>
         )}
       </div>
-      <hr className="m-divider" aria-hidden="true"><span>00</span></hr>
+      <div className="m-divider" aria-hidden="true"><span>00</span></div>
     </div>
   );
 });
