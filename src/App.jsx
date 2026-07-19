@@ -344,6 +344,30 @@ export default function Portfolio() {
   }, [tick]);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!(window.matchMedia && window.matchMedia("(max-width: 768px)").matches)) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const els = Array.from(document.querySelectorAll("[data-reveal]"));
+    if (reduce || els.length === 0) {
+      els.forEach((el) => el.classList.add("in-view"));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("in-view");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
     let tx = 0, ty = 0, x = 0, y = 0, vx = 0, vy = 0;
     const stiffness = 0.1, damping = 0.8;
     const move = (e) => {
