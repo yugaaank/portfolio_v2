@@ -1,13 +1,12 @@
 # Portfolio V2
 
-A high-performance, visually immersive personal portfolio built with **React 19**, **Vite**, and **Three.js**. This project features a custom-built animation engine, advanced WebGL2 shaders, and a sophisticated multi-layered UI architecture designed for maximum performance and visual impact.
+A high-performance, visually immersive personal portfolio built with **React 19**, **Vite**, and a hand-rolled **WebGL2** dithering shader. This project features a custom-built animation engine, advanced WebGL2 shaders, and a sophisticated multi-layered UI architecture designed for maximum performance and visual impact.
 
 ## 🚀 Key Features
 
 - **Custom Scroll-Driven Animation Engine:** High-frequency UI updates synchronized via `requestAnimationFrame` and direct DOM manipulation for 60+ FPS performance.
 - **Layered UI Transition System:** A complex multi-layer reveal system where background blocks and foreground panels interact dynamically based on scroll depth.
 - **Advanced WebGL2 Dithering Shaders:** Custom-coded shaders providing artistic effects like Simplex Noise, Warp, Ripple, and Swirl, with configurable Bayer dithering patterns.
-- **Interactive 3D Scenes:** Seamless integration of Three.js environments using `@react-three/fiber` and `@react-three/drei`.
 - **Contact Fracture Effect:** A unique "fracture" reveal animation for the contact section, splitting the interface into dark and light thematic content.
 - **Smooth Momentum Scrolling:** Orchestrated by **Lenis** for a refined, premium feel.
 - **React Compiler (React Forget):** Utilizing the latest React compilation techniques for optimized re-renders and performance.
@@ -17,11 +16,10 @@ A high-performance, visually immersive personal portfolio built with **React 19*
 - **Framework:** [React 19](https://react.dev/) (with React Compiler)
 - **Build Tool:** [Vite](https://vitejs.dev/)
 - **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) & [PostCSS](https://postcss.org/)
-- **Animations:** [Framer Motion](https://www.framer.com/motion/) & Custom `RAF` loops
-- **3D Engine:** [Three.js](https://threejs.org/) via [R3F](https://github.com/pmndrs/react-three-fiber)
+- **Animations:** Custom `requestAnimationFrame` scroll engine
 - **Smooth Scroll:** [Lenis](https://lenis.darkroom.engineering/)
+- **Shaders:** Hand-rolled WebGL2 (no Three.js dependency)
 - **State Management:** React Hooks & Direct Ref manipulation
-- **Icons:** [Lucide React](https://lucide.dev/)
 
 ## 📂 Project Structure
 
@@ -34,7 +32,6 @@ src/
 │   ├── Projects/      # Dynamic project list and stack displays
 │   ├── Contact/       # Multi-layer fracture reveal contact system
 │   ├── Layout/        # Core UI: Nav, Cursor, Layers, Progress Bar
-│   ├── Showcase/      # Media-heavy visual showcase
 │   └── ui/            # Atomic components and WebGL Shaders
 ├── lib/               # Shared utilities and TypeScript definitions
 ├── utils/             # Animation helpers and project data
@@ -83,11 +80,9 @@ The portfolio showcases several high-impact projects:
    cd portfolio_v2
    ```
 
-2. **Install dependencies:**
+2. **Install dependencies (Bun required):**
    ```bash
    bun install
-   # or
-   npm install
    ```
 
 3. **Start development server:**

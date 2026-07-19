@@ -104,6 +104,10 @@ nav {
   font-size: 1rem; letter-spacing: .22em; text-transform: uppercase;
   opacity: .4; margin-bottom: 2rem; color: var(--text-main);
 }
+.hero-index {
+  font-size: .8rem; letter-spacing: .22em; text-transform: uppercase;
+  opacity: .35; margin-bottom: .8rem; color: var(--text-main);
+}
 .hero-title {
   font-family: var(--font-heading);
   font-size: clamp(5rem, 14vw, 17.5rem);
@@ -180,6 +184,7 @@ nav {
 @keyframes slideText { from { transform: translateX(10%); } to { transform: translateX(-40%); } }
 .between-stat { font-family: var(--font-heading); font-size: clamp(6rem,16vw,16rem); line-height: 1; position: relative; z-index: 2; }
 .between-lbl { font-size: 1.2rem; letter-spacing: .22em; text-transform: uppercase; opacity: .4; margin-top: .5rem; position: relative; z-index: 2; color: #000000; }
+.between-idx { font-size: .8rem; letter-spacing: .22em; text-transform: uppercase; opacity: .4; margin-bottom: 1rem; position: relative; z-index: 2; color: #000000; }
 .between-sub { font-family: var(--font-italic); font-style: italic; font-size: clamp(1rem,2.5vw,2rem); opacity: .4; margin-top: .8rem; position: relative; z-index: 2; color: #000000; }
 
 /* ── PROJECTS ── */

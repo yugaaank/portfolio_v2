@@ -12,6 +12,7 @@ const Hero = forwardRef((props, ref) => {
     >
       <div className="hero-container">
         <div className="hero-text-block">
+          <p className="hero-index">00 / Intro</p>
           <p className="hero-tag">Full-Stack Developer & AI/ML Engineer</p>
           <h1 className="hero-title">
             YUGANK
