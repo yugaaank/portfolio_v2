@@ -1,100 +1,118 @@
 # Portfolio V2
 
-A high-performance, visually immersive personal portfolio built with **React 19**, **Vite**, and a hand-rolled **WebGL2** dithering shader. This project features a custom-built animation engine, advanced WebGL2 shaders, and a sophisticated multi-layered UI architecture designed for maximum performance and visual impact.
+A scroll-driven, single-page portfolio for **Yugank Rathore** — built as a print press running through color separations. Each section is a pass of the press; the page advances through fixed, layered panels as you scroll, with a hand-rolled WebGL2 dithering shader bleeding behind every section.
 
-## 🚀 Key Features
+[![React](https://img.shields.io/badge/React-19-61dafb?logo=react&logoColor=white)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-7-646cff?logo=vite&logoColor=white)](https://vite.dev/)
+[![License](https://img.shields.io/badge/license-Private-8a8a8a)](#license)
+[![WebGL2](https://img.shields.io/badge/shader-WebGL2-990000)](#architecture)
 
-- **Custom Scroll-Driven Animation Engine:** High-frequency UI updates synchronized via `requestAnimationFrame` and direct DOM manipulation for 60+ FPS performance.
-- **Layered UI Transition System:** A complex multi-layer reveal system where background blocks and foreground panels interact dynamically based on scroll depth.
-- **Advanced WebGL2 Dithering Shaders:** Custom-coded shaders providing artistic effects like Simplex Noise, Warp, Ripple, and Swirl, with configurable Bayer dithering patterns.
-- **Contact Fracture Effect:** A unique "fracture" reveal animation for the contact section, splitting the interface into dark and light thematic content.
-- **Smooth Momentum Scrolling:** Orchestrated by **Lenis** for a refined, premium feel.
-- **React Compiler (React Forget):** Utilizing the latest React compilation techniques for optimized re-renders and performance.
+---
 
-## 🛠️ Tech Stack
+## Contents
 
-- **Framework:** [React 19](https://react.dev/) (with React Compiler)
-- **Build Tool:** [Vite](https://vitejs.dev/)
-- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) & [PostCSS](https://postcss.org/)
-- **Animations:** Custom `requestAnimationFrame` scroll engine
-- **Smooth Scroll:** [Lenis](https://lenis.darkroom.engineering/)
-- **Shaders:** Hand-rolled WebGL2 (no Three.js dependency)
-- **State Management:** React Hooks & Direct Ref manipulation
+- [Overview](#overview)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Scripts](#scripts)
+- [Project Structure](#project-structure)
+- [Architecture](#architecture)
+- [Accessibility](#accessibility)
+- [License](#license)
 
-## 📂 Project Structure
+## Overview
+
+The site is a single, immersive scroll experience. Rather than routing between pages, it uses six fixed "passes" — Hero, About, Process, Selected Work, Contact, and a closing Thank You — revealed by three sliding color blocks (dark / cream / lime) that wipe across the viewport as you scroll. The lime layer carries the project "proof sheets": framed plates that advance through a film gate, holding on each project as you scroll.
+
+Key traits:
+
+- **Custom scroll engine** — a `requestAnimationFrame` loop maps scroll position to layer/panel transforms directly via refs, bypassing React's reconciliation for 60 FPS motion.
+- **Scroll holds** — the effective scroll position is magnetically biased toward the nearest section (and, within Projects, the nearest proof), so the page settles on each section instead of flowing freely.
+- **Procedural dithering** — a from-scratch WebGL2 shader provides the retro halftone texture, reacting to scroll depth.
+- **Reduced-motion safe** — all animation degrades to a static, fully-visible layout under `prefers-reduced-motion`.
+
+## Tech Stack
+
+| Area | Choice |
+|------|--------|
+| Framework | [React 19](https://react.dev/) with the React Compiler |
+| Build | [Vite 7](https://vite.dev/) |
+| Smooth scroll | [Lenis](https://lenis.darkroom.engineering/) |
+| Shaders | Hand-rolled WebGL2 (no Three.js) |
+| Styling | Custom CSS-in-JS + [Tailwind CSS v4](https://tailwindcss.com/) |
+| Utilities | `clsx`, `tailwind-merge` |
+| Lint | ESLint 9 (flat config) |
+
+## Getting Started
+
+Requires **Node 20+** and **[Bun](https://bun.sh/)** (the project's package manager).
+
+```bash
+git clone https://github.com/yugaaank/portfolio_v2.git
+cd portfolio_v2
+bun install
+bun dev
+```
+
+The dev server starts on Vite's default port (5173). Open the printed URL and scroll.
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `bun dev` | Start the Vite dev server with HMR. |
+| `bun run build` | Production build to `dist/`. |
+| `bun run preview` | Preview the production build locally. |
+| `bun run lint` | Run ESLint across the project. |
+
+## Project Structure
 
 ```text
 src/
 ├── components/
-│   ├── Hero/          # 3D Scene orchestration and landing visuals
-│   ├── About/         # Scroll-revealed biographical sections
-│   ├── Between/       # Transitional UI elements
-│   ├── Projects/      # Dynamic project list and stack displays
-│   ├── Contact/       # Multi-layer fracture reveal contact system
-│   ├── Layout/        # Core UI: Nav, Cursor, Layers, Progress Bar
-│   └── ui/            # Atomic components and WebGL Shaders
-├── lib/               # Shared utilities and TypeScript definitions
-├── utils/             # Animation helpers and project data
-├── App.jsx            # Central Animation Controller (The "Heart")
-└── main.jsx           # Application Bootstrap
+│   ├── Hero/          # Landing: title + live dithering shader scene
+│   ├── About/         # Bio strip + main panel with skills
+│   ├── Between/       # "Process" pass: Design / Develop / Ship
+│   ├── Projects/      # Proof-sheet film strip + side strip
+│   ├── Contact/       # Dark/light fracture reveal
+│   ├── ThankYou/      # Closing shutter
+│   ├── Layout/        # Nav, Cursor, Layers, ProgressBar, ScrollSpacers, GlobalCSS
+│   └── ui/            # DitheringShader (WebGL2)
+├── utils/
+│   ├── data.js        # Project content
+│   └── utils.js       # cl, lerp, easing, applyLayer/applyPanel helpers
+├── App.jsx            # Scroll engine ("the heart") — tick(), holds, layer math
+├── main.jsx          # Bootstrap (React root + SmoothScrolling)
+└── App.css           # Proof-sheet + project styles
 ```
 
-## 🏗️ Architecture Overview
+## Architecture
 
-The application utilizes a "Bypass" architecture for performance. While React handles the component lifecycle and initial render, the high-frequency animation logic (scroll-based transitions) bypasses the React reconciliation loop.
+The app uses a **bypass** architecture: React owns the component tree and initial render, but the high-frequency scroll animation never touches the reconciler.
 
-### 1. The Animation Loop (`App.jsx`)
-The `tick()` function, wrapped in `useCallback` and triggered by `requestAnimationFrame`, calculates exact scroll percentages for every major section. These values are used to:
-- Apply CSS transforms directly to DOM elements via `refs`.
-- Update uniform variables in custom shaders.
-- Orchestrate the `Layers.jsx` color-block transitions.
+### The scroll engine (`App.jsx`)
 
-### 2. Multi-Layer Reveal
-The `Layers.jsx` component manages three distinct background layers (`l1`, `l2`, `l3`) that scale and shift to create "windows" of content. This is complemented by `applyLayer` and `applyPanel` utility functions that handle the complex math of clipping and parallax.
+`tick()` runs on every Lenis scroll event. It reads `window.scrollY`, computes a progress value for each section, and writes CSS transforms straight to DOM nodes via refs:
 
-### 3. Procedural Shaders
-Located in `src/components/ui/dithering-shader.tsx`, the WebGL2 implementation provides a retro-digital aesthetic. It supports real-time manipulation of:
-- **Shapes:** Simplex, Warp, Ripple, Swirl.
-- **Dithering:** Bayer 2x2, 4x4, 8x8.
-- **Color Palettes:** Interactive RGB/Hex mapping.
+- **Layers** (`Layers.jsx`) — three full-height color blocks (`l1` dark, `l2` cream, `l3` lime) that resize and slide to open "windows" of content.
+- **Panels** — the fixed section panels fade and shift into those windows.
+- **Scroll holds** — `syEff` is biased toward the nearest section anchor and damped, so scrolling settles on each section. Inside Projects, a second hold settles on each proof frame.
 
-## 🌟 Featured Projects
+### Procedural shaders
 
-The portfolio showcases several high-impact projects:
-- **FFflow:** Rust-based TUI for FFmpeg workflow automation.
-- **ClearView:** AI-driven data visualization tool in Python.
-- **FreshR:** React Native & Supabase mobile application for campus management.
-- **AlgoScan:** Machine learning tool for cryptographic algorithm identification.
+`src/components/ui/dithering-shader.tsx` is a standalone WebGL2 component. It ships several shapes (simplex, warp, ripple, swirl, dots, sphere) and Bayer dithering (2×2 / 4×4 / 8×8), and accepts a `scrollProgress` prop so the pattern tightens as the page descends. Each section mounts one behind its content at low opacity.
 
-## 🚦 Getting Started
+### Content model
 
-### Prerequisites
-- **Node.js:** v20.x or higher
-- **Bun:** (Recommended) v1.1.x or higher
+Projects live in `src/utils/data.js` as a plain array — edit that file to change the showcased work. Everything else (copy, skills, contact) is in the relevant component.
 
-### Installation
+## Accessibility
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/yugaaank/portfolio_v2.git
-   cd portfolio_v2
-   ```
+- `prefers-reduced-motion: reduce` disables the ambient loops and the layer wipe, jumping straight to a fully-visible static layout.
+- Each fixed panel is a labeled `region` (`role="region"` + `aria-label`); the closing is `role="contentinfo"`.
+- Nav links have visible `:focus-visible` rings; the custom cursor is suppressed on coarse-pointer (touch) devices.
+- No-JS users see the semantic spacer tree; the experience is enhanced, not required.
 
-2. **Install dependencies (Bun required):**
-   ```bash
-   bun install
-   ```
+## License
 
-3. **Start development server:**
-   ```bash
-   bun dev
-   ```
-
-4. **Production Build:**
-   ```bash
-   bun run build
-   ```
-
-## 📜 License
-
-© 2026 Yugaaank. All rights reserved. Private personal project.
+© 2026 Yugank Rathore. All rights reserved. Private personal project.
