@@ -414,18 +414,39 @@ nav {
   .s-contact { height: 150vh; }
   .s-thankyou { height: 200vh; }
 
-  /* Stack hero text above the shader visual. */
-  .hero-container { flex-direction: column; gap: 2.5rem; text-align: left; }
-  .hero-visual-block { width: 100%; }
-  .hero-title { font-size: clamp(3.5rem, 18vw, 9rem); }
+  /* OPTION B: every panel is full-width and pinned to the left edge so the
+     engine's layer wipe + opacity reveal still work without panels being
+     shoved off-screen by their inline left/width. The background layers
+     still wipe behind for the color-separation feel. */
+  .panel {
+    left: 0 !important;
+    width: 100vw !important;
+    top: 0;
+    bottom: 0;
+  }
 
-  /* About strip becomes a slim top bar, not a 20vw sliver. */
+  /* ── HERO (unsquash) ── */
+  .p-hero { justify-content: flex-start; padding-top: 18vh; }
+  .hero-container { flex-direction: column; gap: 2.5rem; text-align: left; align-items: flex-start; }
+  .hero-text-block { width: 100%; flex: none; }
+  .hero-index { margin-bottom: 1rem; }
+  .hero-tag { margin-bottom: 1.5rem; }
+  .hero-title {
+    font-size: clamp(4rem, 22vw, 11rem);
+    line-height: .82;
+    margin-bottom: 1.5rem;
+  }
+  .hero-sub { font-size: .9rem; max-width: 32ch; margin-bottom: 2rem; }
+  .hero-visual-block { width: 100%; flex: none; margin-top: 1rem; }
+  .hero-scene-wrap { max-width: 70vw; margin: 0 auto; }
+
+  /* ── ABOUT ── */
   .p-about-l1 {
     width: 100vw !important;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 1.2rem var(--padding-x);
+    padding: 1rem var(--padding-x);
     border-right: none;
     border-bottom: 1px solid rgba(240,233,214,.12);
   }
@@ -433,11 +454,23 @@ nav {
   .p-about-l1 .strip-role { display: none; }
   .p-about-l1 .strip-label { margin-bottom: 0; }
 
-  /* Main about panel sits full width under the strip. */
-  .p-about-l2 { width: 100vw !important; padding: 6rem var(--padding-x) 3rem; }
+  .p-about-l2 { width: 100vw !important; padding: 5.5rem var(--padding-x) 3rem; }
 
-  /* Projects strip full width. */
+  /* ── PROJECTS ── */
   .p-proj-l2 { width: 100vw !important; }
+  .p-proj-l3 { padding-top: 5.5rem; }
+
+  /* ── CONTACT FRACTURE (stack, don't collide) ── */
+  .cfrac-dark-content {
+    justify-content: center;
+    padding: 0 var(--padding-x) 3rem;
+  }
+  .cfrac-light-content {
+    justify-content: flex-start;
+    padding: 5rem var(--padding-x) 0;
+  }
+  .cfrac-big { font-size: clamp(3rem, 14vw, 6rem); }
+  .cfrac-email { font-size: clamp(1.6rem, 8vw, 3rem); word-break: break-word; }
 }
 `;
 
