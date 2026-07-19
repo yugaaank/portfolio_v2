@@ -16,7 +16,7 @@ const AboutMain = forwardRef((props, ref) => {
       role="region"
       aria-label="About"
     >
-      <div style={{
+      <div className="shader-layer" style={{
         position: 'absolute',
         inset: 0,
         zIndex: -1,

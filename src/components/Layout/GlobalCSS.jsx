@@ -414,9 +414,11 @@ nav {
   /* No spacer-driven scroll distance on mobile — sections are real blocks. */
   .s { display: none !important; }
 
-  /* The sliding color blocks and the hero/about shaders are desktop flourishes. */
+  /* The sliding color blocks and the ambient shaders are desktop flourishes.
+     Target the shader wrappers by class (added in the components) so we hide
+     only those, never the real content (e.g. the projects proof-strip). */
   .layer { display: none !important; }
-  .hero-scene-wrap, .p-about-l2 > div, .p-between > div, .p-proj-l3 > div { display: none !important; }
+  .shader-layer, .hero-scene-wrap { display: none !important; }
   .between-bg-text { display: none !important; }
 
   /* Panels: from fixed overlay to a centered, full-width content block. */

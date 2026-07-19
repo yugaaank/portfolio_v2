@@ -18,7 +18,7 @@ const ProjectsList = forwardRef((props, ref) => {
       role="region"
       aria-label="Selected work"
     >
-      <div style={{
+      <div className="shader-layer" style={{
         position: 'absolute',
         inset: 0,
         zIndex: -1,
