@@ -5,7 +5,7 @@ import { DitheringShader } from '../ui/dithering-shader';
 const ProjectsList = forwardRef((props, ref) => {
   return (
     <div
-      className="panel p-proj-l3"
+      className="panel p-proj-l3 dither-accent"
       ref={ref}
       data-reveal
       id="work"

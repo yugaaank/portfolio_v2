@@ -495,6 +495,13 @@ nav {
   .p-proj-l3  { background: var(--accent);   color: var(--text-dark); }
   .p-proj-l2  { background: var(--bg-cream); color: var(--text-dark); }
 
+  /* Static flat dither-dot accent on the lime projects block (mobile only). */
+  .dither-accent {
+    background-image:
+      radial-gradient(rgba(12,12,12,0.16) 1px, transparent 1.4px);
+    background-size: 6px 6px;
+  }
+
   /* ── HERO ── */
   .hero-container { flex-direction: column; gap: 1.5rem; text-align: center; align-items: center; width: 100%; max-width: 40rem; margin: 0 auto; }
   .hero-text-block { width: 100%; flex: none; }
