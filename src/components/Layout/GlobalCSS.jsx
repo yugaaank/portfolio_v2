@@ -442,6 +442,48 @@ nav {
     padding: var(--padding-y) var(--padding-x) !important;
   }
 
+  /* Calm scroll-reveal (one motion moment; reduced-motion shows instantly). */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity .4s var(--transition-main), transform .4s var(--transition-main);
+  }
+  [data-reveal].in-view { opacity: 1; transform: none; }
+
+  /* Consistent section index eyebrow. */
+  .m-index {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    opacity: .5;
+    margin-bottom: 1.5rem;
+  }
+  .p-hero .m-index, .p-about-l1 .m-index { color: var(--accent); }
+  .p-about-l2 .m-index, .p-between .m-index, .p-proj-l2 .m-index { color: var(--bg-dark); }
+  .p-proj-l3 .m-index { color: var(--bg-dark); }
+
+  /* Hairline divider with centered label (film-strip perforation feel). */
+  .m-divider {
+    width: 100%;
+    max-width: 40rem;
+    margin: 0 auto;
+    border: 0;
+    border-top: 1px solid currentColor;
+    opacity: .18;
+    position: relative;
+  }
+  .m-divider span {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: inherit;
+    padding: 0 .8rem;
+    font-family: var(--font-heading);
+    font-size: .8rem;
+    letter-spacing: .2em;
+  }
+
   /* Signature backgrounds, preserved per section. */
   .p-hero     { background: var(--bg-dark);  color: var(--bg-cream); min-height: 100vh !important; justify-content: center; }
   .p-about-l1 { background: var(--bg-dark);  color: var(--bg-cream); }
