@@ -22,6 +22,17 @@ const prefersReducedMotion =
   window.matchMedia &&
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+// Scroll-hold tuning. Lower magnet = freer scroll; lower damping = softer,
+// slower settle. Section hold keeps the page gentle; frame hold is a touch
+// stronger so individual proofs click into the gate.
+const HOLD = {
+  sectionMagnet: 1.1,   // pull toward nearest section anchor
+  sectionDamping: 0.14, // ease-in factor per frame
+  sectionFalloff: 0.6,  // vh multiple: how wide each section's grab reaches
+  frameMagnet: 1.6,    // pull toward nearest project frame
+  frameDamping: 0.18,  // ease-in factor per frame
+};
+
 export default function Portfolio() {
   /* scroll spacer refs */
   const heroRef = useRef(null);
@@ -155,9 +166,9 @@ export default function Portfolio() {
       if (d < minDist) { minDist = d; nearestAnchor = a; }
     }
     const anchorGap = nearestAnchor - sy;
-    const anchorMagnet = anchorGap * cl(1 - Math.abs(anchorGap) / (vh * 0.6));
-    const heldSy = sy + anchorMagnet * 1.4;
-    scrollHoldRef.current += (heldSy - scrollHoldRef.current) * 0.16;
+    const anchorMagnet = anchorGap * cl(1 - Math.abs(anchorGap) / (vh * HOLD.sectionFalloff));
+    const heldSy = sy + anchorMagnet * HOLD.sectionMagnet;
+    scrollHoldRef.current += (heldSy - scrollHoldRef.current) * HOLD.sectionDamping;
     const syEff = scrollHoldRef.current;
 
     /* ── transition progress values ── */
@@ -254,10 +265,10 @@ export default function Portfolio() {
       const nearest = Math.round(rawPos);
       const gap = nearest - rawPos;
       const magnet = gap * cl(1 - Math.abs(gap)); // 0 far, ~0.5 at mid, 0 on frame
-      const heldPos = rawPos + magnet * 1.6;
+      const heldPos = rawPos + magnet * HOLD.frameMagnet;
 
       // Damp toward the held position so it eases in instead of snapping.
-      projPosRef.current += (heldPos - projPosRef.current) * 0.18;
+      projPosRef.current += (heldPos - projPosRef.current) * HOLD.frameDamping;
       const pos = projPosRef.current;
 
       cards.forEach((card, i) => {
