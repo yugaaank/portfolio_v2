@@ -24,7 +24,7 @@ export const PROJECTS = [
     desc: "Supabase based react native application for university and college students.",
     stack: "Zustand • React Native • Supabase",
     link: "https://github.com/yugankrathore/freshR",
-    img: "/interventionGPT.png",
+    img: "/freshr.png",
   },
   {
     n: "04",
@@ -33,7 +33,7 @@ export const PROJECTS = [
     desc: "Automated cryptographic algorithm identification from raw ciphertext using machine learning.",
     stack: "Python • Flask • CatBoost • Scikit-learn",
     link: "https://github.com/yugankrathore/AlgoScan",
-    img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=2070",
+    img: "/algoscan.png",
   },
   {
     n: "05",

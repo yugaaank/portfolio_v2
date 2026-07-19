@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bun run *)",
+      "Bash(npm run *)",
+      "Bash(git -C /home/yugaaank/Projects/portfolio_v2 status --short)",
+      "Bash(git -C /home/yugaaank/Projects/portfolio_v2 diff --stat)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(bun --version)",
+      "Bash(bun install *)",
+      "Bash(bun pm *)",
+      "Bash(curl -sL \"https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=2070\" -o public/algoscan.png)",
+      "Bash(git rm *)"
+    ]
+  }
+}
