@@ -54,6 +54,7 @@ export default function Portfolio() {
   /* thank-you refs */
   const tyStageRef = useRef(null);
   const cardsRef = useRef([]);
+  const projPosRef = useRef(0);   // damped film position for the frame hold
 
   /* cursor */
   const curRef = useRef(null);
@@ -213,15 +214,26 @@ export default function Portfolio() {
     const pl2A = cl((tBP - 0.35) / 0.5) * cl(1 - tPC * 3);
     applyPanel(pPL2Ref, l2L, l2W, pl2A);
 
-    /* ── PROJECTS FILM ADVANCE ─────────────*/
+    /* ── PROJECTS FILM ADVANCE (with frame hold) ──*/
     if (pPL3Ref.current && cardsRef.current.length === 0) {
       cardsRef.current = Array.from(pPL3Ref.current.querySelectorAll('.proof-frame'));
     }
     const cards = cardsRef.current;
     if (cards.length > 0) {
       const tCards = projH > 0 ? cl((sy - projTop) / (projH * 0.6)) : 0;
-      // Continuous frame position: 0 = first frame in gate, (n-1) = last.
-      const pos = tCards * (cards.length - 1);
+      // Raw continuous frame position: 0 = first frame, (n-1) = last.
+      const rawPos = tCards * (cards.length - 1);
+
+      // Magnetic hold: bias toward the nearest frame so the film settles
+      // on each proof when scrolling stops. Pull grows as we near a frame.
+      const nearest = Math.round(rawPos);
+      const gap = nearest - rawPos;
+      const magnet = gap * cl(1 - Math.abs(gap)); // 0 far, ~0.5 at mid, 0 on frame
+      const heldPos = rawPos + magnet * 1.6;
+
+      // Damp toward the held position so it eases in instead of snapping.
+      projPosRef.current += (heldPos - projPosRef.current) * 0.18;
+      const pos = projPosRef.current;
 
       cards.forEach((card, i) => {
         const dist = i - pos;            // signed distance from the gate
@@ -273,6 +285,7 @@ export default function Portfolio() {
     tick();
     const handleResize = () => {
       cardsRef.current = [];
+      projPosRef.current = 0;
       tick();
     };
     window.addEventListener("resize", handleResize);
