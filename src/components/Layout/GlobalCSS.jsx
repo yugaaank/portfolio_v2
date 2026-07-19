@@ -165,12 +165,18 @@ nav {
   line-height: .88; letter-spacing: -.01em; margin-bottom: 2.5rem;
 }
 .about-body { font-size: .82rem; line-height: 1.9; opacity: .55; max-width: 50ch; margin-bottom: 3rem; color: #000000; }
-.skills { display: flex; flex-wrap: wrap; gap: .55rem; }
+.skills { display: flex; flex-direction: column; gap: 1rem; }
+.skill-group { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem; }
+.skill-tag {
+  font-size: .7rem; letter-spacing: .22em; text-transform: uppercase;
+  opacity: .35; margin-right: .4rem; color: #000000;
+}
 .skill {
   padding: .32rem .85rem;
   border: 1px solid rgba(12,12,12,.18);
   font-size: .95rem; letter-spacing: .12em; text-transform: uppercase; color: #000000;
 }
+.skill-core { border-color: var(--accent); color: #0c0c0c; font-weight: 500; }
 
 /* ── BETWEEN ── */
 .p-between { z-index: 10; color: var(--text-dark); justify-content: center; align-items: center; text-align: center; }
@@ -182,8 +188,9 @@ nav {
   animation: slideText 14s linear infinite;
 }
 @keyframes slideText { from { transform: translateX(10%); } to { transform: translateX(-40%); } }
-.between-stat { font-family: var(--font-heading); font-size: clamp(6rem,16vw,16rem); line-height: 1; position: relative; z-index: 2; }
-.between-lbl { font-size: 1.2rem; letter-spacing: .22em; text-transform: uppercase; opacity: .4; margin-top: .5rem; position: relative; z-index: 2; color: #000000; }
+.between-passes { display: flex; gap: clamp(1.5rem, 4vw, 4rem); position: relative; z-index: 2; }
+.pass { font-family: var(--font-heading); font-size: clamp(2.5rem, 7vw, 7rem); line-height: 1; letter-spacing: -.01em; display: flex; align-items: baseline; gap: .4rem; }
+.pass i { font-family: var(--font-body); font-style: normal; font-size: .9rem; letter-spacing: .15em; opacity: .35; }
 .between-idx { font-size: .8rem; letter-spacing: .22em; text-transform: uppercase; opacity: .4; margin-bottom: 1rem; position: relative; z-index: 2; color: #000000; }
 .between-sub { font-family: var(--font-italic); font-style: italic; font-size: clamp(1rem,2.5vw,2rem); opacity: .4; margin-top: .8rem; position: relative; z-index: 2; color: #000000; }
 

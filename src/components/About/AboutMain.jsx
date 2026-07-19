@@ -1,12 +1,10 @@
 import { forwardRef } from 'react';
 import { DitheringShader } from '../ui/dithering-shader';
 
-const SKILLS = [
-  "HTML", "CSS", "JavaScript", "TypeScript",
-  "React", "Next.js", "Node.js", "Express",
-  "MongoDB", "MySQL", "Java", "C",
-  "Linux", "Framer Motion", "GSAP"
-];
+const SKILLS = {
+  core: ["AI / ML", "Python", "Systems", "React", "Node.js"],
+  also: ["TypeScript", "Next.js", "Rust", "Linux", "Postgres", "C / C++"],
+};
 
 const AboutMain = forwardRef((props, ref) => {
   return (
@@ -41,11 +39,18 @@ const AboutMain = forwardRef((props, ref) => {
         I’m a Computer Science student specializing in Artificial Intelligence & Machine Learning, focused on building performant web applications, intelligent systems, and experimental developer tools. I work across frontend, backend, and system design — blending engineering with product thinking.
       </p>
       <div className="skills">
-        {SKILLS.map((s) => (
-          <span className="skill" key={s}>
-            {s}
-          </span>
-        ))}
+        <div className="skill-group">
+          <span className="skill-tag">Core</span>
+          {SKILLS.core.map((s) => (
+            <span className="skill skill-core" key={s}>{s}</span>
+          ))}
+        </div>
+        <div className="skill-group">
+          <span className="skill-tag">Also</span>
+          {SKILLS.also.map((s) => (
+            <span className="skill" key={s}>{s}</span>
+          ))}
+        </div>
       </div>
     </div>
   );

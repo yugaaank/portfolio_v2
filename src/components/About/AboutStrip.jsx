@@ -11,7 +11,7 @@ const AboutStrip = forwardRef((props, ref) => {
     >
       <p className="strip-label">01 / About</p>
       <div className="strip-num">01</div>
-      <div className="strip-role">Designer & Developer</div>
+      <div className="strip-role">Engineering intelligent products — interface to infrastructure.</div>
     </div>
   );
 });
