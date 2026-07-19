@@ -11,6 +11,7 @@ const AboutMain = forwardRef((props, ref) => {
     <div
       className="panel p-about-l2"
       ref={ref}
+      data-reveal
       id="about"
       style={{ left: "100vw", width: "80vw", zIndex: 10, opacity: 0 }}
       role="region"

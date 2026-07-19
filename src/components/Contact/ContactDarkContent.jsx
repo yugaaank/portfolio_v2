@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 
 const ContactDarkContent = forwardRef((props, ref) => {
   return (
-    <div className="cfrac-dark-content" ref={ref} id="contact" role="region" aria-label="Contact">
+    <div className="cfrac-dark-content" ref={ref} id="contact" role="region" aria-label="Contact" data-reveal>
       <p className="cfrac-eyebrow">04 / Contact — Let's collaborate</p>
       <h2 className="cfrac-big">
         Got a project

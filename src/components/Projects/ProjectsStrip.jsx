@@ -5,6 +5,7 @@ const ProjectsStrip = forwardRef((props, ref) => {
     <div
       className="panel p-proj-l2"
       ref={ref}
+      data-reveal
       style={{
         left: "100vw",
         width: "30vw",

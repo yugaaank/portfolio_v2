@@ -7,6 +7,7 @@ const ProjectsList = forwardRef((props, ref) => {
     <div
       className="panel p-proj-l3"
       ref={ref}
+      data-reveal
       id="work"
       style={{
         left: "-70vw",
@@ -41,6 +42,7 @@ const ProjectsList = forwardRef((props, ref) => {
             <article
               key={p.n}
               className="proof-frame"
+              data-reveal
               style={{ zIndex: PROJECTS.length - i }}
             >
               <div className="proof-plate">

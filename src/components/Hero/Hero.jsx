@@ -11,6 +11,7 @@ const Hero = forwardRef((props, ref) => {
     <div
       className="panel p-hero"
       ref={ref}
+      data-reveal
       id="intro"
       style={{ left: 0, width: "100vw", zIndex: 11 }}
       role="region"

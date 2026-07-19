@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 
 const ContactLightContent = forwardRef((props, ref) => {
   return (
-    <div className="cfrac-light-content" ref={ref} role="region" aria-label="Contact">
+    <div className="cfrac-light-content" ref={ref} role="region" aria-label="Contact" data-reveal>
       <p className="cfrac-light-label">Send a message</p>
       <a className="cfrac-email" href="mailto:yugaankrathore0@gmail.com">
         yugaankrathore0@gmail.com

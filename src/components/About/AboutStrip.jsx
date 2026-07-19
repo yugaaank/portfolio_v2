@@ -5,6 +5,7 @@ const AboutStrip = forwardRef((props, ref) => {
     <div
       className="panel p-about-l1"
       ref={ref}
+      data-reveal
       style={{ left: 0, width: "20vw", zIndex: 11, opacity: 0 }}
       role="region"
       aria-label="About"

@@ -6,6 +6,7 @@ const Between = forwardRef((props, ref) => {
     <div
       className="panel p-between"
       ref={ref}
+      data-reveal
       style={{
         left: "100vw",
         width: "100vw",
