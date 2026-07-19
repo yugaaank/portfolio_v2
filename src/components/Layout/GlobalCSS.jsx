@@ -425,6 +425,19 @@ nav {
     bottom: 0;
   }
 
+  /* On touch there is no fine-grained scroll to "read" the layer wipe, and
+     the engine's per-frame layer math produces a clacky jump between the
+     hero and the next section. Freeze the sliding color blocks and paint
+     each panel with its own backing color so sections cross-fade on opacity
+     alone — the same palette, none of the jank. */
+  .layer { display: none !important; }
+  .p-hero    { background: var(--bg-dark); }
+  .p-about-l1 { background: var(--bg-dark); }
+  .p-about-l2 { background: var(--bg-cream); }
+  .p-between { background: var(--bg-cream); }
+  .p-proj-l3 { background: var(--accent); }
+  .p-proj-l2 { background: var(--bg-cream); }
+
   /* ── HERO (unsquash) ── */
   .p-hero { justify-content: flex-start; padding-top: 18vh; }
   .hero-container { flex-direction: column; gap: 2.5rem; text-align: left; align-items: flex-start; }
@@ -439,6 +452,15 @@ nav {
   .hero-sub { font-size: .9rem; max-width: 32ch; margin-bottom: 2rem; }
   .hero-visual-block { width: 100%; flex: none; margin-top: 1rem; }
   .hero-scene-wrap { max-width: 70vw; margin: 0 auto; }
+
+  /* ── BETWEEN / PROCESS (center the column + wrap the passes row) ── */
+  .p-between .between-bg-text { display: none; }
+  .between-idx, .between-sub, .between-passes { width: 100%; text-align: center; }
+  .between-passes {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem 2.5rem;
+  }
 
   /* ── ABOUT ── */
   .p-about-l1 {

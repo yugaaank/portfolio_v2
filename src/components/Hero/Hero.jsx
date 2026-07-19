@@ -1,7 +1,12 @@
-import { forwardRef } from 'react';
+import { forwardRef, useState } from 'react';
 import Scene from './Scene';
 
 const Hero = forwardRef((props, ref) => {
+  // Skip the WebGL shader + mouse-driven scene on touch / coarse pointers.
+  const [showShader] = useState(
+    () => !(window.matchMedia && window.matchMedia('(pointer: coarse)').matches)
+  );
+
   return (
     <div
       className="panel p-hero"
@@ -23,10 +28,12 @@ const Hero = forwardRef((props, ref) => {
           </p>
           <p className="hero-hint">↓ Scroll to explore</p>
         </div>
-        
-        <div className="hero-visual-block">
-          <Scene />
-        </div>
+
+        {showShader && (
+          <div className="hero-visual-block">
+            <Scene />
+          </div>
+        )}
       </div>
     </div>
   );
