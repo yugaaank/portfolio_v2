@@ -103,7 +103,7 @@
   border: 1px solid rgba(12,12,12,0.25);
   border-radius: 100px;
   align-self: flex-start;
-  margin-bottom: 1.8rem;
+  margin-bottom: 3rem;
 }
 
 .proof-name {
@@ -208,7 +208,7 @@
   }
   .proof-frame-no { font-size: 0.7rem; }
   .proof-meta { align-items: center; width: 100%; }
-  .proof-tag { margin-bottom: 1.2rem; }
+  .proof-tag { margin-bottom: 2.4rem; }
   .proof-name { font-size: clamp(2.5rem, 13vw, 4.5rem); text-align: center; }
   .proof-desc { max-width: 42ch; margin: 0 auto 2rem; opacity: .65; text-align: center; }
   .proof-foot {
