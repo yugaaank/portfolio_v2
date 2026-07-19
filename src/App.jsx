@@ -55,6 +55,7 @@ export default function Portfolio() {
   const tyStageRef = useRef(null);
   const cardsRef = useRef([]);
   const projPosRef = useRef(0);   // damped film position for the frame hold
+  const scrollHoldRef = useRef(0); // damped effective scroll for section holds
 
   /* cursor */
   const curRef = useRef(null);
@@ -135,23 +136,47 @@ export default function Portfolio() {
 
     const vh = window.innerHeight;
 
+    /* ── SECTION SCROLL HOLD ───────────────
+       Bias the effective scroll toward the nearest section anchor so the
+       page settles on each section when scrolling stops (same magnetic
+       technique as the project frame hold, applied at section level). */
+    const anchors = [
+      heroTop + heroH * 0.5,
+      aboutTop + aboutH * 0.5,
+      betweenTop + betweenH * 0.5,
+      projTop + projH * 0.5,
+      contactTop + contactH * 0.5,
+      tyTop + (document.body.scrollHeight - tyTop) * 0.5,
+    ];
+    let nearestAnchor = anchors[0];
+    let minDist = Infinity;
+    for (const a of anchors) {
+      const d = Math.abs(a - sy);
+      if (d < minDist) { minDist = d; nearestAnchor = a; }
+    }
+    const anchorGap = nearestAnchor - sy;
+    const anchorMagnet = anchorGap * cl(1 - Math.abs(anchorGap) / (vh * 0.6));
+    const heldSy = sy + anchorMagnet * 1.4;
+    scrollHoldRef.current += (heldSy - scrollHoldRef.current) * 0.16;
+    const syEff = scrollHoldRef.current;
+
     /* ── transition progress values ── */
-    const tHA = heroH > 0 ? cl((sy - (heroTop + heroH * 0.45)) / (heroH * 0.45)) : 0; 
-    const tAB = aboutH > 0 ? cl((sy - (aboutTop + aboutH * 0.45)) / (aboutH * 0.45)) : 0;
-    const tBP = betweenH > 0 ? cl((sy - (betweenTop + betweenH * 0.45)) / (betweenH * 0.45)) : 0;
+    const tHA = heroH > 0 ? cl((syEff - (heroTop + heroH * 0.45)) / (heroH * 0.45)) : 0;
+    const tAB = aboutH > 0 ? cl((syEff - (aboutTop + aboutH * 0.45)) / (aboutH * 0.45)) : 0;
+    const tBP = betweenH > 0 ? cl((syEff - (betweenTop + betweenH * 0.45)) / (betweenH * 0.45)) : 0;
 
     // projects → contact:
-    const tPC = projH > 0 ? cl((sy - (projTop + projH * 0.6)) / (projH * 0.35)) : 0;
+    const tPC = projH > 0 ? cl((syEff - (projTop + projH * 0.6)) / (projH * 0.35)) : 0;
 
     // contact fracture open
-    const tCO = vh > 0 ? cl((sy - (contactTop - vh * 0.8)) / (vh * 0.8)) : 0;
+    const tCO = vh > 0 ? cl((syEff - (contactTop - vh * 0.8)) / (vh * 0.8)) : 0;
 
     // Content animation trigger
-    const tCC = vh > 0 ? cl((sy - (contactTop + vh * 0.2)) / (vh * 0.6)) : 0;
+    const tCC = vh > 0 ? cl((syEff - (contactTop + vh * 0.2)) / (vh * 0.6)) : 0;
 
     // thank-you shutter
     // Added safety guard for top of page
-    const tTY = (sy < 100 || vh <= 0) ? 0 : cl((sy - (tyTop - vh * 0.5)) / (vh * 0.5)); 
+    const tTY = (syEff < 100 || vh <= 0) ? 0 : cl((syEff - (tyTop - vh * 0.5)) / (vh * 0.5));
 
     /* ── LAYER 1 (black) ─────────────────────
        tHA: width 100→20vw
@@ -286,6 +311,7 @@ export default function Portfolio() {
     const handleResize = () => {
       cardsRef.current = [];
       projPosRef.current = 0;
+      scrollHoldRef.current = 0;
       tick();
     };
     window.addEventListener("resize", handleResize);
