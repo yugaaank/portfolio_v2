@@ -24,43 +24,49 @@ const ProjectsList = forwardRef((props, ref) => {
         opacity: 0.1,
         pointerEvents: 'none'
       }}>
-        <DitheringShader 
-          shape="dots" 
-          colorBack="#d4f53c" 
-          colorFront="#0c0c0c" 
+        <DitheringShader
+          shape="dots"
+          colorBack="#d4f53c"
+          colorFront="#0c0c0c"
           pxSize={3}
           speed={0.2}
         />
       </div>
-      <h2 className="proj-h2">Selected Work</h2>
-      <div className="proj-cards-container">
-        {PROJECTS.map((p, i) => (
-          <div
-            key={p.n}
-            className="proj-card-wrapper"
-            style={{ zIndex: PROJECTS.length - i }}
-          >
-            <a
-              href={p.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="proj-card"
+      <h2 className="proj-h2">Selected Work — Proof Sheets</h2>
+      <div className="proof-strip">
+        <div className="proof-sprockets" aria-hidden="true" />
+        <div className="proof-frames">
+          {PROJECTS.map((p, i) => (
+            <article
+              key={p.n}
+              className="proof-frame"
+              style={{ zIndex: PROJECTS.length - i }}
             >
-              <div className="proj-card-img">
-                <img src={p.img} alt={p.name} />
+              <div className="proof-plate">
+                <img src={p.img} alt={p.name} loading="lazy" />
+                <span className="proof-frame-no">FRAME {p.n}</span>
               </div>
-              <div className="proj-card-info">
-                <div className="proj-card-header">
-                   <span className="proj-card-n">{p.n}</span>
-                   <span className="proj-card-tag">{p.tag}</span>
+              <div className="proof-meta">
+                <div className="proof-meta-head">
+                  <span className="proof-tag">{p.tag}</span>
                 </div>
-                <h3 className="proj-card-title">{p.name}</h3>
-                <p className="proj-card-desc">{p.desc}</p>
-                <div className="proj-card-stack-text">{p.stack}</div>
+                <h3 className="proof-name">{p.name}</h3>
+                <p className="proof-desc">{p.desc}</p>
+                <div className="proof-foot">
+                  <span className="proof-stack">{p.stack}</span>
+                  <a
+                    className="proof-link"
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View project →
+                  </a>
+                </div>
               </div>
-            </a>
-          </div>
-        ))}
+            </article>
+          ))}
+        </div>
       </div>
     </div>
   );

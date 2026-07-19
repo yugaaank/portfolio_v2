@@ -94,6 +94,20 @@ export default function Portfolio() {
         tyStageRef.current.style.clipPath = "inset(0 0 0 0)";
         tyStageRef.current.classList.add("live");
       }
+      // Reduced motion: lay proof frames out as a static vertical stack
+      // (no overlap, no scroll-driven advance).
+      if (pPL3Ref.current) {
+        const frames = pPL3Ref.current.querySelectorAll('.proof-frame');
+        frames.forEach((f, i) => {
+          f.style.position = "relative";
+          f.style.transform = "none";
+          f.style.opacity = "1";
+          f.style.height = "auto";
+          f.style.marginBottom = i < frames.length - 1 ? "4rem" : "0";
+        });
+        const wrap = pPL3Ref.current.querySelector('.proof-frames');
+        if (wrap) wrap.style.height = "auto";
+      }
       return;
     }
 
@@ -199,36 +213,27 @@ export default function Portfolio() {
     const pl2A = cl((tBP - 0.35) / 0.5) * cl(1 - tPC * 3);
     applyPanel(pPL2Ref, l2L, l2W, pl2A);
 
-    /* ── PROJECTS CARD ANIMATION ─────────────*/
+    /* ── PROJECTS FILM ADVANCE ─────────────*/
     if (pPL3Ref.current && cardsRef.current.length === 0) {
-      cardsRef.current = Array.from(pPL3Ref.current.querySelectorAll('.proj-card-wrapper'));
+      cardsRef.current = Array.from(pPL3Ref.current.querySelectorAll('.proof-frame'));
     }
     const cards = cardsRef.current;
     if (cards.length > 0) {
-      const tCards = projH > 0 ? cl((sy - projTop) / (projH * 0.55)) : 0;
-      
+      const tCards = projH > 0 ? cl((sy - projTop) / (projH * 0.6)) : 0;
+      // Continuous frame position: 0 = first frame in gate, (n-1) = last.
+      const pos = tCards * (cards.length - 1);
+
       cards.forEach((card, i) => {
-        const initialY = i * 18; 
-        const initialScale = 1 - i * 0.025;
-        
-        if (i === cards.length - 1) {
-          card.style.transform = `translateY(${initialY}px) scale(${initialScale})`;
-          card.style.opacity = 1;
-          return;
-        }
-
-        const start = i / (cards.length - 1);
-        const end = (i + 1) / (cards.length - 1);
-        const p = cl((tCards - start) / (end - start));
-        const easedP = easeInCubic(p);
-
-        const translateY = easedP * -110; 
-        const opacity = 1 - easedP * 0.7;
-        const rotate = easedP * -2;
-        const scale = initialScale - (easedP * 0.05);
-
-        card.style.transform = `translateY(calc(${initialY}px + ${translateY}%)) rotate(${rotate}deg) scale(${scale})`;
+        const dist = i - pos;            // signed distance from the gate
+        const absD = Math.abs(dist);
+        const offset = dist * 105;        // % of frame height per step
+        const scale = 1 - absD * 0.06;
+        const opacity = cl(1 - absD * 0.55);
+        const yClip = lerp(0, 14, cl(absD)); // neighbors peek, dimmed
+        card.style.transform = `translateY(calc(${offset}% + ${yClip}px)) scale(${scale})`;
         card.style.opacity = opacity;
+        card.style.zIndex = String(100 - Math.round(absD * 10));
+        card.style.pointerEvents = absD < 0.5 ? "auto" : "none";
       });
     }
 
