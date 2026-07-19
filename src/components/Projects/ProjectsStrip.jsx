@@ -31,8 +31,8 @@ const ProjectsStrip = forwardRef((props, ref) => {
         </p>
         <div style={{ marginTop: '2rem' }}>
           <p style={{ fontSize: '0.8rem', opacity: 0.5, marginBottom: '0.5rem', letterSpacing: '0.1em' }}>REACH OUT</p>
-          <a className="contact-link" href="mailto:yugankrathore@gmail.com">
-            yugankrathore@gmail.com
+          <a className="contact-link" href="mailto:yugaankrathore0@gmail.com">
+            yugaankrathore0@gmail.com
           </a>
           <a className="contact-link" href="https://github.com/yugankrathore" target="_blank" rel="noopener noreferrer" style={{ border: 'none', color: '#0c0c0c', opacity: 0.6 }}>
             VIEW ALL REPOS →
