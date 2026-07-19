@@ -399,100 +399,144 @@ nav {
   .cur, .cur-ring { display: none; }
 }
 
-/* ── MOBILE LAYOUT ── */
+/* ── MOBILE LAYOUT (mobile-first base: static, centered, simple) ──
+   The desktop experience is the fixed-panel press-engine. On phones we drop
+   that entirely: panels become normal-flow, centered blocks you scroll
+   through natively. tick() is gated off on mobile, so these !important
+   rules own the layout with no per-frame engine fighting them. Each section
+   keeps its signature solid color so the press identity survives. */
 @media (max-width: 768px) {
   :root {
-    --padding-x: 1.4rem;
-    --padding-y: 2.5rem;
+    --padding-x: 1.5rem;
+    --padding-y: 5.5rem;
   }
 
-  /* Trim scroll distance so sections aren't over-scrolled on small screens. */
-  .s-hero    { height: 170vh; }
-  .s-about   { height: 170vh; }
-  .s-between { height: 130vh; }
-  .s-proj    { height: 200vh; }
-  .s-contact { height: 150vh; }
-  .s-thankyou { height: 200vh; }
+  /* No spacer-driven scroll distance on mobile — sections are real blocks. */
+  .s { display: none !important; }
 
-  /* OPTION B: every panel is full-width and pinned to the left edge so the
-     engine's layer wipe + opacity reveal still work without panels being
-     shoved off-screen by their inline left/width. The background layers
-     still wipe behind for the color-separation feel. */
-  .panel {
-    left: 0 !important;
-    width: 100vw !important;
-    top: 0;
-    bottom: 0;
-  }
-
-  /* On touch there is no fine-grained scroll to "read" the layer wipe, and
-     the engine's per-frame layer math produces a clacky jump between the
-     hero and the next section. Freeze the sliding color blocks and paint
-     each panel with its own backing color so sections cross-fade on opacity
-     alone — the same palette, none of the jank. */
+  /* The sliding color blocks and the hero/about shaders are desktop flourishes. */
   .layer { display: none !important; }
-  .p-hero    { background: var(--bg-dark); }
-  .p-about-l1 { background: var(--bg-dark); }
-  .p-about-l2 { background: var(--bg-cream); }
-  .p-between { background: var(--bg-cream); }
-  .p-proj-l3 { background: var(--accent); }
-  .p-proj-l2 { background: var(--bg-cream); }
+  .hero-scene-wrap, .p-about-l2 > div, .p-between > div, .p-proj-l3 > div { display: none !important; }
+  .between-bg-text { display: none !important; }
 
-  /* ── HERO (unsquash) ── */
-  .p-hero { justify-content: flex-start; padding-top: 18vh; }
-  .hero-container { flex-direction: column; gap: 2.5rem; text-align: left; align-items: flex-start; }
-  .hero-text-block { width: 100%; flex: none; }
-  .hero-index { margin-bottom: 1rem; }
-  .hero-tag { margin-bottom: 1.5rem; }
-  .hero-title {
-    font-size: clamp(4rem, 22vw, 11rem);
-    line-height: .82;
-    margin-bottom: 1.5rem;
-  }
-  .hero-sub { font-size: .9rem; max-width: 32ch; margin-bottom: 2rem; }
-  .hero-visual-block { width: 100%; flex: none; margin-top: 1rem; }
-  .hero-scene-wrap { max-width: 70vw; margin: 0 auto; }
-
-  /* ── BETWEEN / PROCESS (center the column + wrap the passes row) ── */
-  .p-between .between-bg-text { display: none; }
-  .between-idx, .between-sub, .between-passes { width: 100%; text-align: center; }
-  .between-passes {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem 2.5rem;
-  }
-
-  /* ── ABOUT ── */
-  .p-about-l1 {
-    width: 100vw !important;
-    flex-direction: row;
+  /* Panels: from fixed overlay to a centered, full-width content block. */
+  .panel {
+    position: static !important;
+    inset: auto !important;
+    left: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    opacity: 1 !important;
+    transform: none !important;
+    overflow: visible !important;
+    pointer-events: auto !important;
+    display: flex !important;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 1rem var(--padding-x);
-    border-right: none;
-    border-bottom: 1px solid rgba(240,233,214,.12);
+    text-align: center;
+    padding: var(--padding-y) var(--padding-x) !important;
   }
-  .p-about-l1 .strip-num,
-  .p-about-l1 .strip-role { display: none; }
-  .p-about-l1 .strip-label { margin-bottom: 0; }
 
-  .p-about-l2 { width: 100vw !important; padding: 5.5rem var(--padding-x) 3rem; }
+  /* Signature backgrounds, preserved per section. */
+  .p-hero     { background: var(--bg-dark);  color: var(--bg-cream); min-height: 100vh !important; justify-content: center; }
+  .p-about-l1 { background: var(--bg-dark);  color: var(--bg-cream); }
+  .p-about-l2 { background: var(--bg-cream); color: var(--text-dark); }
+  .p-between  { background: var(--bg-cream); color: var(--text-dark); }
+  .p-proj-l3  { background: var(--accent);   color: var(--text-dark); }
+  .p-proj-l2  { background: var(--bg-cream); color: var(--text-dark); }
+
+  /* ── HERO ── */
+  .hero-container { flex-direction: column; gap: 1.5rem; text-align: center; align-items: center; width: 100%; max-width: 40rem; margin: 0 auto; }
+  .hero-text-block { width: 100%; flex: none; }
+  .hero-index, .hero-tag { opacity: .4; }
+  .hero-title { font-size: clamp(4rem, 21vw, 9rem); line-height: .82; margin: 1rem 0; }
+  .hero-sub { font-size: 1rem; line-height: 1.75; max-width: 34ch; margin: 0 auto 1.5rem; opacity: .55; }
+  .hero-hint { font-size: .85rem; }
+
+  /* ── ABOUT STRIP (collapse to a simple label) ── */
+  .p-about-l1 {
+    flex-direction: row; align-items: center; justify-content: space-between;
+    padding: 1.2rem var(--padding-x) !important;
+  }
+  .p-about-l1 .strip-num, .p-about-l1 .strip-role { display: none; }
+
+  /* ── ABOUT MAIN ── */
+  .p-about-l2 .about-h2 { font-size: clamp(2.5rem, 11vw, 4.5rem); text-align: center; }
+  .about-body { max-width: 42ch; margin: 0 auto 2.5rem; text-align: center; font-size: 1rem; line-height: 1.8; opacity: .6; }
+  .skills { align-items: center; width: 100%; max-width: 32rem; margin: 0 auto; }
+  .skill-group { justify-content: center; }
+
+  /* ── BETWEEN / PROCESS ── */
+  .between-idx { opacity: .5; margin-bottom: 1.5rem; }
+  .between-passes { flex-wrap: wrap; justify-content: center; gap: 1rem 2rem; }
+  .pass { font-size: clamp(2rem, 9vw, 3.5rem); }
+  .between-sub { opacity: .5; margin-top: 1.2rem; }
 
   /* ── PROJECTS ── */
-  .p-proj-l2 { width: 100vw !important; }
-  .p-proj-l3 { padding-top: 5.5rem; }
+  .p-proj-l3 .proj-h2 { font-size: clamp(2rem, 9vw, 3.5rem); text-align: center; margin-bottom: 2.5rem; }
+  .p-proj-l2 { text-align: center; }
+  .p-proj-l2 .contact-num { opacity: .12; }
+  .contact-cta { font-size: clamp(2rem, 9vw, 3.2rem); text-align: center; }
+  .contact-link { display: inline-block; font-size: 1rem; }
 
-  /* ── CONTACT FRACTURE (stack, don't collide) ── */
-  .cfrac-dark-content {
+  /* ── CONTACT FRACTURE → simple stacked blocks ── */
+  .cfrac-dark { display: none !important; }
+  .cfrac-dark-content, .cfrac-light-content {
+    position: static !important;
+    inset: auto !important;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    width: 100% !important;
+    max-width: 40rem;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
     justify-content: center;
-    padding: 0 var(--padding-x) 3rem;
+    padding: var(--padding-y) var(--padding-x) !important;
   }
-  .cfrac-light-content {
-    justify-content: flex-start;
-    padding: 5rem var(--padding-x) 0;
+  .cfrac-dark-content { background: var(--bg-dark); color: var(--bg-cream); display: flex !important; flex-direction: column; }
+  .cfrac-light-content { background: var(--accent); color: var(--text-dark); display: flex !important; flex-direction: column; }
+  .cfrac-eyebrow, .cfrac-light-label { opacity: .5; }
+  .cfrac-big { font-size: clamp(2.5rem, 12vw, 5rem); }
+  .cfrac-body { font-size: 1rem; line-height: 1.8; opacity: .6; max-width: 38ch; margin: 0 auto 2rem; }
+  .cfrac-email { font-size: clamp(1.5rem, 7vw, 2.5rem); word-break: break-word; }
+  .cfrac-socials { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 1.5rem; align-items: center; }
+  .avail-dot { animation: none; }
+
+  /* ── THANK YOU ── */
+  .ty-stage {
+    position: static !important;
+    inset: auto !important;
+    clip-path: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    width: 100% !important;
+    min-height: 80vh !important;
+    background: var(--accent);
+    color: var(--text-dark);
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: var(--padding-y) var(--padding-x) !important;
   }
-  .cfrac-big { font-size: clamp(3rem, 14vw, 6rem); }
-  .cfrac-email { font-size: clamp(1.6rem, 8vw, 3rem); word-break: break-word; }
+  .ty-counter { position: static; margin-bottom: 1.5rem; opacity: .4; }
+  .ty-headline { font-size: clamp(3.5rem, 18vw, 8rem); text-align: center; }
+  .ty-sub { max-width: 40ch; margin: 0 auto 2.5rem; opacity: .6; }
+  .ty-foot { position: static; flex-direction: column; gap: 1rem; border-top: 1px solid rgba(12,12,12,.15); padding-top: 1.5rem; margin-top: 2rem; text-align: center; }
+
+  /* Touch targets: nav links + project links get a comfortable tap area. */
+  .nav-links a { padding: 0.6rem 0.4rem; }
+  .proof-link, .contact-link, .cfrac-email, .cfrac-social, .ty-links a { min-height: 44px; display: inline-flex; align-items: center; }
+
+  /* Kill the 300ms tap delay and double-tap zoom on interactive elements. */
+  a, button, [role="button"] { touch-action: manipulation; }
 }
 `;
 

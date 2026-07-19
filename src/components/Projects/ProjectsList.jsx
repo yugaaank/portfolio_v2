@@ -7,6 +7,7 @@ const ProjectsList = forwardRef((props, ref) => {
     <div
       className="panel p-proj-l3"
       ref={ref}
+      id="work"
       style={{
         left: "-70vw",
         width: "70vw",

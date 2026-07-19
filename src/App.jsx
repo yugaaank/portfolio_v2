@@ -22,6 +22,15 @@ const prefersReducedMotion =
   window.matchMedia &&
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+// Mobile uses a static, centered document-flow layout (see GlobalCSS
+// max-width:768px block). The fixed-panel scroll engine is desktop-only,
+// so we stop tick() from writing per-frame inline transforms on small
+// screens — otherwise it fights the CSS for control of the panels.
+const isMobile =
+  typeof window !== "undefined" &&
+  window.matchMedia &&
+  window.matchMedia("(max-width: 768px)").matches;
+
 // Scroll-hold tuning. Lower magnet = freer scroll; lower damping = softer,
 // slower settle. Section hold keeps the page gentle; frame hold is a touch
 // stronger so individual proofs click into the gate.
@@ -75,6 +84,9 @@ export default function Portfolio() {
   const [prog, setProg] = useState(0);
 
   const tick = useCallback((forcedSy) => {
+    // Mobile: engine is off — the static CSS layout owns the page.
+    if (isMobile) return;
+
     const sy = forcedSy !== undefined ? forcedSy : window.scrollY;
     const totalH = document.body.scrollHeight - window.innerHeight;
     setProg(totalH > 0 ? sy / totalH : 0);
