@@ -17,6 +17,11 @@ import ThankYou from "./components/ThankYou/ThankYou";
 import ScrollSpacers from "./components/Layout/ScrollSpacers";
 import { cl, lerp, easeOutCubic, easeInCubic, applyLayer, applyPanel } from "./utils/utils";
 
+const prefersReducedMotion =
+  typeof window !== "undefined" &&
+  window.matchMedia &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 export default function Portfolio() {
   /* scroll spacer refs */
   const heroRef = useRef(null);
@@ -60,6 +65,37 @@ export default function Portfolio() {
     const sy = forcedSy !== undefined ? forcedSy : window.scrollY;
     const totalH = document.body.scrollHeight - window.innerHeight;
     setProg(totalH > 0 ? sy / totalH : 0);
+
+    // Reduced motion: skip the per-frame layer wipe and jump straight to
+    // end states so every panel is visible without animation.
+    if (prefersReducedMotion) {
+      const tyEl = tyRef.current;
+      if (tyEl) applyPanel(pHeroRef, 0, 100, 1, 0);
+      applyLayer(l1Ref, -20, 20);
+      applyLayer(l2Ref, 100, 0);
+      applyLayer(l3Ref, -70, 70);
+      applyPanel(pAL1Ref, -20, 20, 1);
+      applyPanel(pAL2Ref, 100, 0, 1);
+      applyPanel(pBetRef, 100, 0, 1);
+      applyPanel(pPL3Ref, -70, 70, 1);
+      applyPanel(pPL2Ref, 100, 0, 1);
+      if (cDarkRef.current) cDarkRef.current.style.opacity = 1;
+      if (cDarkContentRef.current) {
+        cDarkContentRef.current.style.opacity = 1;
+        cDarkContentRef.current.style.transform = "none";
+        cDarkContentRef.current.classList.add("live");
+      }
+      if (cLightContentRef.current) {
+        cLightContentRef.current.style.opacity = 1;
+        cLightContentRef.current.style.transform = "none";
+        cLightContentRef.current.classList.add("live");
+      }
+      if (tyStageRef.current) {
+        tyStageRef.current.style.clipPath = "inset(0 0 0 0)";
+        tyStageRef.current.classList.add("live");
+      }
+      return;
+    }
 
     const heroEl = heroRef.current;
     const aboutEl = aboutRef.current;
@@ -227,36 +263,6 @@ export default function Portfolio() {
   const lenis = useLenis(({ scroll }) => {
     tick(scroll);
   });
-
-  useEffect(() => {
-    if (!lenis) return;
-    let snapTimeout;
-    const handleScroll = () => {
-      clearTimeout(snapTimeout);
-      snapTimeout = setTimeout(() => {
-        const sections = [heroRef, aboutRef, betweenRef, projRef, contactRef, tyRef]
-          .map(r => r.current).filter(Boolean);
-        const scrollY = window.scrollY;
-        let closest = null, minDist = Infinity;
-        sections.forEach(sec => {
-          const dist = Math.abs(sec.offsetTop - scrollY);
-          if (dist < minDist) { minDist = dist; closest = sec; }
-        });
-        if (closest && minDist < window.innerHeight * 0.3) {
-          lenis.scrollTo(closest, {
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            lock: false,
-          });
-        }
-      }, 200);
-    };
-    lenis.on('scroll', handleScroll);
-    return () => { 
-      lenis.off('scroll', handleScroll);
-      clearTimeout(snapTimeout); 
-    };
-  }, [lenis]);
 
   useEffect(() => {
     tick();

@@ -15,6 +15,8 @@ const Between = forwardRef((props, ref) => {
         alignItems: "center",
         padding: "var(--padding-y) var(--padding-x)"
       }}
+      role="region"
+      aria-label="Highlights"
     >
       <div style={{
         position: 'absolute',

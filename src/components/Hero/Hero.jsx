@@ -7,6 +7,8 @@ const Hero = forwardRef((props, ref) => {
       className="panel p-hero"
       ref={ref}
       style={{ left: 0, width: "100vw", zIndex: 11 }}
+      role="region"
+      aria-label="Intro"
     >
       <div className="hero-container">
         <div className="hero-text-block">

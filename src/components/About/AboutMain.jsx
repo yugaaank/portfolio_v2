@@ -14,6 +14,8 @@ const AboutMain = forwardRef((props, ref) => {
       className="panel p-about-l2"
       ref={ref}
       style={{ left: "100vw", width: "80vw", zIndex: 10, opacity: 0 }}
+      role="region"
+      aria-label="About"
     >
       <div style={{
         position: 'absolute',

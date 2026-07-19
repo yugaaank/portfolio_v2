@@ -14,6 +14,8 @@ const ProjectsList = forwardRef((props, ref) => {
         opacity: 0,
         color: "#0c0c0c",
       }}
+      role="region"
+      aria-label="Selected work"
     >
       <div style={{
         position: 'absolute',

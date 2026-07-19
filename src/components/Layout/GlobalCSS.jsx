@@ -40,6 +40,10 @@ nav {
   opacity: .5; transition: opacity .2s;
 }
 .nav-links a:hover { opacity: 1; }
+.nav-links a:focus-visible {
+  opacity: 1; outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px;
+}
+.nav-logo:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
 
 /* ── PROGRESS BAR ── */
 .prog {
@@ -369,6 +373,13 @@ nav {
 .s-proj    { height: 260vh; }
 .s-contact { height: 180vh; }
 .s-thankyou { height: 250vh; }
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-hint, .cur-ring, .avail-dot, .between-bg-text { animation: none !important; }
+  body { cursor: auto; }
+  .cur, .cur-ring { display: none; }
+}
 `;
 
 const GlobalCSS = () => {
