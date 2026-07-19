@@ -477,12 +477,15 @@ nav {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    background: inherit;
+    background: transparent;
     padding: 0 .8rem;
     font-family: var(--font-heading);
     font-size: .8rem;
     letter-spacing: .2em;
   }
+  .p-hero .m-divider span, .p-about-l1 .m-divider span, .cfrac-dark-content .m-divider span { background: var(--bg-dark); }
+  .p-about-l2 .m-divider span, .p-between .m-divider span, .p-proj-l2 .m-divider span { background: var(--bg-cream); }
+  .p-proj-l3 .m-divider span, .cfrac-light-content .m-divider span, .ty-stage .m-divider span { background: var(--accent); }
 
   /* Signature backgrounds, preserved per section. */
   .p-hero     { background: var(--bg-dark);  color: var(--bg-cream); min-height: 100vh !important; justify-content: center; }
