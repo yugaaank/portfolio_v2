@@ -28,7 +28,6 @@ const Hero = forwardRef((props, ref) => {
           <p className="hero-sub" data-hero="sub">
             Designing and engineering intelligent digital products, from interface to infrastructure, with precision, performance, and purpose.
           </p>
-          <p className="hero-hint" data-hero="hint">↓ Scroll to explore</p>
         </div>
 
         {showShader && (

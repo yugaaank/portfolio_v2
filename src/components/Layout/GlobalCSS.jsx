@@ -73,6 +73,14 @@ nav {
 }
 /* ── HERO ── */
 .p-hero { z-index: 11; color: var(--bg-cream); justify-content: center; }
+.p-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 30% 40%, rgba(240,233,214,0.05) 0%, transparent 55%),
+    radial-gradient(circle 42% at 82% 56%, rgba(212,245,60,0.05) 0%, transparent 62%);
+  pointer-events: none; z-index: -1;
+}
 .hero-container {
   display: flex;
   align-items: center;
@@ -123,10 +131,6 @@ nav {
 .hero-sub {
   font-size: .8rem; line-height: 1.85;
   opacity: .4; max-width: 36ch; margin-bottom: 2.5rem; color: var(--text-main);
-}
-.hero-hint {
-  font-size: .95rem; letter-spacing: .2em; text-transform: uppercase;
-  opacity: .3; animation: blink 2s linear infinite; color: var(--text-main);
 }
 @keyframes blink { 0%,100% { opacity: .3; } 50% { opacity: .75; } }
 @keyframes breathe { 0%,100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.2); } }
@@ -397,7 +401,6 @@ nav {
   .p-hero [data-hero="tag"]    { animation-delay: 120ms; }
   .p-hero [data-hero="title"]  { animation-delay: 220ms; }
   .p-hero [data-hero="sub"]    { animation-delay: 340ms; }
-  .p-hero [data-hero="hint"]   { animation-delay: 460ms; }
 }
 @keyframes heroRise {
   from { opacity: 0; transform: translateY(26px); filter: blur(8px); }
@@ -427,7 +430,7 @@ nav {
 
 /* ── REDUCED MOTION ── */
 @media (prefers-reduced-motion: reduce) {
-  .hero-hint, .cur-ring, .avail-dot, .between-bg-text { animation: none !important; }
+  .cur-ring, .avail-dot, .between-bg-text { animation: none !important; }
   .p-hero [data-hero] { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
   body { cursor: auto; }
   .cur, .cur-ring { display: none; }
@@ -550,7 +553,6 @@ nav {
   .hero-index, .hero-tag { opacity: .4; }
   .hero-title { font-size: clamp(4rem, 21vw, 9rem); line-height: .82; margin: 1rem 0; }
   .hero-sub { font-size: 1rem; line-height: 1.75; max-width: 34ch; margin: 0 auto 1.5rem; opacity: .55; }
-  .hero-hint { font-size: .85rem; }
 
   /* ── ABOUT STRIP (collapse to a simple label) ── */
   .p-about-l1 {

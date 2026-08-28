@@ -33,7 +33,7 @@ const ProjectsStrip = forwardRef((props, ref) => {
           <a className="contact-link" href="mailto:yugaankrathore0@gmail.com">
             yugaankrathore0@gmail.com
           </a>
-          <a className="contact-link" href="https://github.com/yugankrathore" target="_blank" rel="noopener noreferrer" style={{ border: 'none', color: '#0c0c0c', opacity: 0.6 }}>
+          <a className="contact-link" href="https://github.com/yugaaank" target="_blank" rel="noopener noreferrer" style={{ border: 'none', color: '#0c0c0c', opacity: 0.6 }}>
             VIEW ALL REPOS →
           </a>
         </div>

@@ -47,7 +47,7 @@ const ProjectsList = forwardRef((props, ref) => {
               style={{ zIndex: PROJECTS.length - i }}
             >
               <div className="proof-plate">
-                <img src={p.img} alt={p.name} loading="lazy" />
+                <span className="proof-plate-mark">{p.name}</span>
                 <span className="proof-frame-no">FRAME {p.n}</span>
               </div>
               <div className="proof-meta">
