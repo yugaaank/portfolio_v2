@@ -19,20 +19,20 @@ const Hero = forwardRef((props, ref) => {
     >
       <div className="hero-container">
         <div className="hero-text-block">
-          <p className="m-index">00 — Intro</p>
-          <p className="hero-tag">Full-Stack Developer & AI/ML Engineer</p>
-          <h1 className="hero-title">
+          <p className="m-index" data-hero="index">00 — Intro</p>
+          <p className="hero-tag" data-hero="tag">Full-Stack Developer & AI/ML Engineer</p>
+          <h1 className="hero-title" data-hero="title">
             YUGANK
             <span className="line-2">RATHORE</span>
           </h1>
-          <p className="hero-sub">
-            Designing and engineering intelligent digital products — from interface to infrastructure — with precision, performance, and purpose.
+          <p className="hero-sub" data-hero="sub">
+            Designing and engineering intelligent digital products, from interface to infrastructure, with precision, performance, and purpose.
           </p>
-          <p className="hero-hint">↓ Scroll to explore</p>
+          <p className="hero-hint" data-hero="hint">↓ Scroll to explore</p>
         </div>
 
         {showShader && (
-          <div className="hero-visual-block">
+          <div className="hero-visual-block" data-hero="visual">
             <Scene />
           </div>
         )}

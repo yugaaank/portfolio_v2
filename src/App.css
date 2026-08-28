@@ -14,6 +14,15 @@
   --nav-height: 5rem;
   
   --transition-main: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Motion palette - Physical personality (3-curve lock) */
+  --ease-snap: cubic-bezier(0.22, 1, 0.36, 1);
+  --spring-snappy: linear(
+    0, 0.009, 0.035 2.1%, 0.141 4.4%, 0.723 12.9%,
+    0.938 16.7%, 1.017 19.4%, 1.067 22.5%, 1.089 26.0%,
+    1.079 30.3%, 1.049 36.0%, 1.024 42.6%, 1.011 50.3%,
+    1.004 59.2%, 1.001 69.3%, 1
+  );
 }
 
 /* Projects Proof Sheet */
@@ -148,12 +157,19 @@
   border-bottom: 1px solid rgba(12,12,12,0.3);
   padding-bottom: 0.2rem;
   white-space: nowrap;
-  transition: letter-spacing 0.25s, border-color 0.25s;
+  transition: letter-spacing 0.25s var(--ease-snap), border-color 0.25s var(--ease-snap), transform 0.25s var(--ease-snap);
 }
 
 .proof-link:hover {
   letter-spacing: 0.16em;
   border-color: #0c0c0c;
+}
+
+.proof-link:active { transform: scale(0.97); }
+.proof-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 2px;
 }
 
 @media (max-width: 1024px) {

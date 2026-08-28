@@ -42,7 +42,7 @@ export default function Scene() {
                     rotateY(${mousePos.x * 10}deg)
                     translate3d(${mousePos.x * 20}px, ${mousePos.y * 20}px, 0)
                 `,
-                transition: 'transform 0.1s ease-out',
+                transition: 'transform 0.15s var(--ease-snap)',
                 willChange: 'transform'
             }}
         >
