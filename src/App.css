@@ -5,9 +5,9 @@
   --text-main: #FFF0C4;
   --text-dark: #0c0c0c;
   
-  --font-heading: 'Bebas Neue', sans-serif;
-  --font-body: 'Syne Mono', monospace;
-  --font-italic: 'Instrument Serif', serif;
+  --font-heading: 'Anton', sans-serif;
+  --font-body: 'Space Mono', monospace;
+  --font-italic: 'Playfair Display', serif;
   
   --padding-x: 3.5rem;
   --padding-y: 4.5rem;
@@ -99,7 +99,7 @@
   position: absolute;
   bottom: 0.8rem;
   left: 0.8rem;
-  font-family: 'Syne Mono', monospace;
+  font-family: 'Space Mono', monospace;
   font-size: 0.8rem;
   letter-spacing: 0.15em;
   color: #d4f53c;
@@ -124,7 +124,7 @@
 }
 
 .proof-name {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Anton', sans-serif;
   font-size: clamp(3rem, 6vw, 6rem);
   line-height: 0.9;
   letter-spacing: -0.01em;
